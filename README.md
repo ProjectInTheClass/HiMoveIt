@@ -2,6 +2,12 @@
 사진 전문가가 아니더라도 손쉽게 시네마 그래프 콘텐츠를 만들 수 있는 앱으로,
 [네이버 D2 Campus Fest](http://d2campusfest.kr/7th/)에 공모를 동시에 진행할 예정 입니다.
 
+## 함께하는 개발자
+
+Jaewan Jeong    (@jwmsg0525)<br>
+SeongSu Oh      (@oss5824)<br>
+KyungHoon Kang  (@KangKyung)<br>
+
 ## 구현에 대한 D2의 설명
     
     [필수 구현 사항] 
@@ -23,3 +29,5 @@
     - 성능 최적화 (속도, 메모리 등)
     - 우대사항에 대한 구현 수준
     - 프로젝트 관리
+
+
