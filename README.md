@@ -1,4 +1,4 @@
-# Hi Move It
+# HiMoveIt
 사진 전문가가 아니더라도 손쉽게 시네마 그래프 콘텐츠를 만들 수 있는 앱으로,
 [네이버 D2 Campus Fest](http://d2campusfest.kr/7th/)에 공모를 동시에 진행할 예정 입니다.
 
