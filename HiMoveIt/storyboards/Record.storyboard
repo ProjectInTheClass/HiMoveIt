@@ -76,10 +76,12 @@
                             <constraint firstItem="1Sj-qt-d3N" firstAttribute="leading" secondItem="9S6-4r-CCC" secondAttribute="leading" id="Xgu-oX-e7i"/>
                             <constraint firstItem="9S6-4r-CCC" firstAttribute="trailing" secondItem="eoO-34-n6d" secondAttribute="trailing" id="ZJ5-EP-Qru"/>
                             <constraint firstItem="9S6-4r-CCC" firstAttribute="trailing" secondItem="1Sj-qt-d3N" secondAttribute="trailing" id="dED-zd-5D4"/>
+                            <constraint firstItem="bvs-nc-ASg" firstAttribute="top" secondItem="eoO-34-n6d" secondAttribute="bottom" id="erX-ae-Zpm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9S6-4r-CCC"/>
                     </view>
                     <connections>
+                        <outlet property="cameraLayer" destination="eoO-34-n6d" id="cfR-T4-dGL"/>
                         <outlet property="cancelBtn" destination="Hdt-6B-mpF" id="6tn-pR-x3x"/>
                         <outlet property="recordBtn" destination="u23-H0-6I4" id="o3R-gS-JDz"/>
                     </connections>

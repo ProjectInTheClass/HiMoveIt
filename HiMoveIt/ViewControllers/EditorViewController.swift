@@ -9,7 +9,7 @@
 import UIKit
 
 class EditorViewController: UIViewController {
-
+    
     @IBOutlet weak var cancelBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
