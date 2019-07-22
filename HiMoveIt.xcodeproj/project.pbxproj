@@ -66,6 +66,13 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		DDA2CA1522E598BD00B62F88 /* ExtendedModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExtendedModels;
+			sourceTree = "<group>";
+		};
 		DDB2B1AD22DDA4A600337D56 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +92,7 @@
 		DDB2B1B822DDA4A600337D56 /* HiMoveIt */ = {
 			isa = PBXGroup;
 			children = (
+				DDA2CA1522E598BD00B62F88 /* ExtendedModels */,
 				DDA2CA0E22E1D4F700B62F88 /* ViewControllers */,
 				DDA2CA0922E1CE5000B62F88 /* storyboards */,
 				DDB2B1B922DDA4A600337D56 /* AppDelegate.swift */,
