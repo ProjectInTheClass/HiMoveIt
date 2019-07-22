@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Record View Controller-->
+        <scene sceneID="w5f-xv-Euv">
+            <objects>
+                <viewController storyboardIdentifier="recordView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0qN-xE-Xjo" customClass="RecordViewController" customModule="HiMoveIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X2R-kB-Ldr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Sj-qt-d3N">
+                                <rect key="frame" x="0.0" y="20" width="414" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hdt-6B-mpF">
+                                        <rect key="frame" x="361" y="21" width="37" height="38"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="취소"/>
+                                        <connections>
+                                            <action selector="clickCancelBtn:" destination="0qN-xE-Xjo" eventType="touchUpInside" id="XeP-wh-AhN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Hdt-6B-mpF" secondAttribute="trailing" constant="16" id="epO-3g-3Qi"/>
+                                    <constraint firstItem="Hdt-6B-mpF" firstAttribute="centerY" secondItem="1Sj-qt-d3N" secondAttribute="centerY" id="ide-TK-i8E"/>
+                                    <constraint firstAttribute="height" constant="80" id="vak-xf-RfF"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvs-nc-ASg">
+                                <rect key="frame" x="0.0" y="655" width="414" height="81"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u23-H0-6I4">
+                                        <rect key="frame" x="182.66666666666666" y="16" width="49" height="49"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="u23-H0-6I4" secondAttribute="height" multiplier="1:1" id="H8g-A5-w8k"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="clickRecordBtn:" destination="0qN-xE-Xjo" eventType="touchUpInside" id="1CZ-p3-FXr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="u23-H0-6I4" firstAttribute="top" secondItem="bvs-nc-ASg" secondAttribute="top" constant="16" id="6Su-hs-mDZ"/>
+                                    <constraint firstItem="u23-H0-6I4" firstAttribute="centerX" secondItem="bvs-nc-ASg" secondAttribute="centerX" id="Fpw-Al-09r"/>
+                                    <constraint firstAttribute="height" constant="81" id="JTf-rN-4YF"/>
+                                    <constraint firstAttribute="bottom" secondItem="u23-H0-6I4" secondAttribute="bottom" constant="16" id="xc5-PV-qn6"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoO-34-n6d">
+                                <rect key="frame" x="0.0" y="100" width="414" height="555"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9S6-4r-CCC" firstAttribute="trailing" secondItem="bvs-nc-ASg" secondAttribute="trailing" id="2WY-pQ-me1"/>
+                            <constraint firstItem="eoO-34-n6d" firstAttribute="leading" secondItem="9S6-4r-CCC" secondAttribute="leading" id="43F-al-bLP"/>
+                            <constraint firstItem="bvs-nc-ASg" firstAttribute="leading" secondItem="9S6-4r-CCC" secondAttribute="leading" id="EVX-dD-FVd"/>
+                            <constraint firstItem="eoO-34-n6d" firstAttribute="top" secondItem="1Sj-qt-d3N" secondAttribute="bottom" id="KxB-2q-hYG"/>
+                            <constraint firstItem="1Sj-qt-d3N" firstAttribute="top" secondItem="9S6-4r-CCC" secondAttribute="top" id="P4d-h2-PKl"/>
+                            <constraint firstItem="9S6-4r-CCC" firstAttribute="bottom" secondItem="bvs-nc-ASg" secondAttribute="bottom" id="Ryo-oz-jx0"/>
+                            <constraint firstItem="bvs-nc-ASg" firstAttribute="top" secondItem="eoO-34-n6d" secondAttribute="bottom" id="UG7-m4-A2m"/>
+                            <constraint firstItem="1Sj-qt-d3N" firstAttribute="leading" secondItem="9S6-4r-CCC" secondAttribute="leading" id="Xgu-oX-e7i"/>
+                            <constraint firstItem="9S6-4r-CCC" firstAttribute="trailing" secondItem="eoO-34-n6d" secondAttribute="trailing" id="ZJ5-EP-Qru"/>
+                            <constraint firstItem="9S6-4r-CCC" firstAttribute="trailing" secondItem="1Sj-qt-d3N" secondAttribute="trailing" id="dED-zd-5D4"/>
+                            <constraint firstItem="bvs-nc-ASg" firstAttribute="top" secondItem="eoO-34-n6d" secondAttribute="bottom" id="erX-ae-Zpm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9S6-4r-CCC"/>
+                    </view>
+                    <connections>
+                        <outlet property="cameraLayer" destination="eoO-34-n6d" id="cfR-T4-dGL"/>
+                        <outlet property="cancelBtn" destination="Hdt-6B-mpF" id="6tn-pR-x3x"/>
+                        <outlet property="recordBtn" destination="u23-H0-6I4" id="o3R-gS-JDz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gva-5S-pbm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="645" y="-110"/>
+        </scene>
+    </scenes>
+</document>
