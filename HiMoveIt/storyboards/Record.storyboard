@@ -40,23 +40,43 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvs-nc-ASg">
                                 <rect key="frame" x="0.0" y="655" width="414" height="81"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u23-H0-6I4">
-                                        <rect key="frame" x="182.66666666666666" y="16" width="49" height="49"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJ6-20-XPl">
+                                        <rect key="frame" x="0.0" y="15" width="414" height="51"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVj-WV-tOe">
+                                                <rect key="frame" x="0.0" y="0.0" width="181.66666666666666" height="51"/>
+                                                <state key="normal" title="Button" image="flash"/>
+                                                <connections>
+                                                    <action selector="clickFlashBtn:" destination="0qN-xE-Xjo" eventType="touchUpInside" id="a3e-1O-G7t"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u23-H0-6I4">
+                                                <rect key="frame" x="181.66666666666666" y="0.0" width="51" height="51"/>
+                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="u23-H0-6I4" secondAttribute="height" multiplier="1:1" id="H8g-A5-w8k"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="clickRecordBtn:" destination="0qN-xE-Xjo" eventType="touchUpInside" id="1CZ-p3-FXr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmm-yG-ZHj">
+                                                <rect key="frame" x="232.66666666666663" y="0.0" width="181.33333333333337" height="51"/>
+                                                <state key="normal" title="Button" image="rgb"/>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="u23-H0-6I4" secondAttribute="height" multiplier="1:1" id="H8g-A5-w8k"/>
+                                            <constraint firstItem="hmm-yG-ZHj" firstAttribute="width" secondItem="BVj-WV-tOe" secondAttribute="width" id="aRI-2q-kfh"/>
                                         </constraints>
-                                        <connections>
-                                            <action selector="clickRecordBtn:" destination="0qN-xE-Xjo" eventType="touchUpInside" id="1CZ-p3-FXr"/>
-                                        </connections>
-                                    </button>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="u23-H0-6I4" firstAttribute="top" secondItem="bvs-nc-ASg" secondAttribute="top" constant="16" id="6Su-hs-mDZ"/>
-                                    <constraint firstItem="u23-H0-6I4" firstAttribute="centerX" secondItem="bvs-nc-ASg" secondAttribute="centerX" id="Fpw-Al-09r"/>
+                                    <constraint firstItem="uJ6-20-XPl" firstAttribute="top" secondItem="bvs-nc-ASg" secondAttribute="top" constant="15" id="7Uk-D5-WcY"/>
                                     <constraint firstAttribute="height" constant="81" id="JTf-rN-4YF"/>
-                                    <constraint firstAttribute="bottom" secondItem="u23-H0-6I4" secondAttribute="bottom" constant="16" id="xc5-PV-qn6"/>
+                                    <constraint firstAttribute="trailing" secondItem="uJ6-20-XPl" secondAttribute="trailing" id="QZu-UR-WnY"/>
+                                    <constraint firstAttribute="bottom" secondItem="uJ6-20-XPl" secondAttribute="bottom" constant="15" id="RKw-ki-MJ8"/>
+                                    <constraint firstItem="uJ6-20-XPl" firstAttribute="leading" secondItem="bvs-nc-ASg" secondAttribute="leading" id="z6w-Pl-tiv"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoO-34-n6d">
@@ -91,4 +111,8 @@
             <point key="canvasLocation" x="645" y="-110"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="flash" width="32" height="32"/>
+        <image name="rgb" width="32" height="32"/>
+    </resources>
 </document>
