@@ -11,10 +11,17 @@ import UIKit
 class EditorViewController: UIViewController {
     
     @IBOutlet weak var cancelBtn: UIButton!
+    
+    var recFileURL:NSURL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("URL : "+(recFileURL?.absoluteString)!)
         // Do any additional setup after loading the view.
+    }
+    
+    func setRecURL(fileURL:NSURL){
+        self.recFileURL = fileURL
     }
     
     func goBack(){

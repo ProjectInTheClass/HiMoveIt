@@ -9,85 +9,24 @@
 import UIKit
 import AVFoundation
 
-class RecordViewController: UIViewController{
-  
-    var session: AVCaptureSession?
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    var captureDevice:AVCaptureDevice?
-    var movieOutput: AVCaptureMovieFileOutput?
-    
+class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegate{
+    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+        
+    }
     @IBOutlet weak var recordBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var cameraLayer: UIView!
-    
-    var recoStatus:Bool = false;
+    var recordCameraModel:RecordCameraModel?
+    var recordStatus:RecordStatusModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.recordCameraModel = RecordCameraModel(cameraLayer: cameraLayer, rootView: self)
+        self.recordStatus = RecordStatusModel()
+        self.recordCameraModel?.setCamera()
         self.roundBtn(recordBtn);
-        self.cameraSetting()
-        // Do any additional setup after loading the view.
-    }
-//    override func viewDidAppear(_ animated: Bool) {
-//        self.cameraSetting()
-//    }
-//    override func viewDidDisappear(_ animated: Bool) {
-//        dismissCaptureSession()
-//    }
-    func cameraSetting(){
-        captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
-        if(captureDevice == nil){
-            createAlert(title:"카메라를 불러올 수 없음",message:"카메라를 불러오는데 오류가 존재합니다.\n권한을 확인해 주세요.")
-            return
-        }
-        
-        do {
-            // Create an instance of the AVCaptureDeviceInput class using the device object and intialise capture session
-            let input = try AVCaptureDeviceInput(device: captureDevice!)
-            session = AVCaptureSession()
-            session?.addInput(input)
-            // Initialize the video preview layer and add it as a sublayer to the viewcontroller view's layer.
-
-            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
-            videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-            videoPreviewLayer?.frame = cameraLayer.layer.bounds
-            cameraLayer.layer.addSublayer(videoPreviewLayer!)
-            
-            // Start capture session.
-            session?.startRunning()
-        } catch {
-            // If any error occurs, let the user know. For the example purpose just print out the error
-            print(error)
-            return
-        }
         
     }
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        videoPreviewLayer!.connection?.videoOrientation = AVCaptureVideoOrientation(rawValue:UIDevice.current.orientation.rawValue)!
-        let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: size)
-        videoPreviewLayer?.frame = rect
-        videoPreviewLayer!.videoGravity =    AVLayerVideoGravity.resizeAspectFill
-        
-    }
-    private func dismissCaptureSession() {
-        if let running = self.session?.isRunning, running {
-            self.session?.stopRunning()
-        }
-        self.session = nil
-        self.videoPreviewLayer?.removeFromSuperlayer()
-        self.videoPreviewLayer = nil
-    }
-    
-    func createAlert(title:String,message:String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-            self.navigationController?.popViewController(animated: true)
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     func roundBtn(_ object:AnyObject){
         object.layer?.cornerRadius = (object.frame?.size.width)!/2;
         object.layer?.masksToBounds = true;
@@ -97,44 +36,46 @@ class RecordViewController: UIViewController{
         object.layer?.masksToBounds = true;
     }
     
-    
-    func loadEditorView(){
+    func setSwipeTransition(){
         let transition = CATransition()
         transition.duration = 0.5
         transition.type = CATransitionType.push
         transition.subtype = CATransitionSubtype.fromRight
         transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
         view.window!.layer.add(transition, forKey: kCATransition)
-        
+    }
+    func loadEditorView(fileURL:NSURL){
+        setSwipeTransition()
         let storyBoard: UIStoryboard = UIStoryboard(name: "Editor", bundle: nil)
         let editorViewController = storyBoard.instantiateViewController(withIdentifier: "editorView") as! EditorViewController
+        editorViewController.setRecURL(fileURL: fileURL)
         self.present(editorViewController, animated: false, completion: nil)
     }
-    
-    func startRecord(){
-        
-    }
-    func stopRecord()
-    {
-        
-    }
-    
-    
+
     @IBAction func clickRecordBtn(_ sender: Any) {
-        if recoStatus { //정지처리
-            recoStatus = false;
+        if recordStatus!.getRecordOn() { //정지처리
+            recordStatus!.setRecordOn(status: false);
             roundBtn(recordBtn)
-            self.stopRecord()
-            loadEditorView()
+            let fileURL:NSURL = (recordCameraModel?.stopRec())!
+            loadEditorView(fileURL:fileURL)
         }else{ //녹화처리
-            recoStatus = true;
+            recordStatus!.setRecordOn(status: true);
             squareBtn(recordBtn)
-            self.startRecord()
-            
+            recordCameraModel?.startRec()
             
         }
     }
     
+    @IBAction func clickFlashBtn(_ sender: Any) {
+        if recordStatus!.getFlashOn() { //플레시 끄기
+            recordCameraModel?.offFlash()
+            recordStatus!.setFlashOn(status: false);
+        }else{ //플레시 켜기
+            recordCameraModel?.onFlash()
+            recordStatus!.setFlashOn(status: true);
+            
+        }
+    }
     
     @IBAction func clickCancelBtn(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

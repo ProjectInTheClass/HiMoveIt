@@ -46,6 +46,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVj-WV-tOe">
                                                 <rect key="frame" x="0.0" y="0.0" width="181.66666666666666" height="51"/>
                                                 <state key="normal" title="Button" image="flash"/>
+                                                <connections>
+                                                    <action selector="clickFlashBtn:" destination="0qN-xE-Xjo" eventType="touchUpInside" id="a3e-1O-G7t"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u23-H0-6I4">
                                                 <rect key="frame" x="181.66666666666666" y="0.0" width="51" height="51"/>
