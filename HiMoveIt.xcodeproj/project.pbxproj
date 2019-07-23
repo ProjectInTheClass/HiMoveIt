@@ -12,6 +12,9 @@
 		DDA2CA0D22E1D48300B62F88 /* Editor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA2CA0C22E1D48300B62F88 /* Editor.storyboard */; };
 		DDA2CA1022E1DF2300B62F88 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2CA0F22E1DF2300B62F88 /* RecordViewController.swift */; };
 		DDA2CA1222E1E9BE00B62F88 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2CA1122E1E9BE00B62F88 /* EditorViewController.swift */; };
+		DDA2CA3522E6EBBC00B62F88 /* RecordStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2CA3422E6EBBC00B62F88 /* RecordStatusModel.swift */; };
+		DDA2CA3722E6EEF800B62F88 /* RecordCameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2CA3622E6EEF800B62F88 /* RecordCameraModel.swift */; };
+		DDA2CA3922E6EFAF00B62F88 /* FloatAlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2CA3822E6EFAF00B62F88 /* FloatAlertModel.swift */; };
 		DDB2B1BA22DDA4A600337D56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB2B1B922DDA4A600337D56 /* AppDelegate.swift */; };
 		DDB2B1BC22DDA4A600337D56 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB2B1BB22DDA4A600337D56 /* MainViewController.swift */; };
 		DDB2B1BF22DDA4A600337D56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB2B1BD22DDA4A600337D56 /* Main.storyboard */; };
@@ -25,6 +28,9 @@
 		DDA2CA0C22E1D48300B62F88 /* Editor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Editor.storyboard; sourceTree = "<group>"; };
 		DDA2CA0F22E1DF2300B62F88 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		DDA2CA1122E1E9BE00B62F88 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
+		DDA2CA3422E6EBBC00B62F88 /* RecordStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStatusModel.swift; sourceTree = "<group>"; };
+		DDA2CA3622E6EEF800B62F88 /* RecordCameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCameraModel.swift; sourceTree = "<group>"; };
+		DDA2CA3822E6EFAF00B62F88 /* FloatAlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatAlertModel.swift; sourceTree = "<group>"; };
 		DDB2B1B622DDA4A600337D56 /* HiMoveIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiMoveIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDB2B1B922DDA4A600337D56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDB2B1BB22DDA4A600337D56 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +75,9 @@
 		DDA2CA1522E598BD00B62F88 /* ExtendedModels */ = {
 			isa = PBXGroup;
 			children = (
+				DDA2CA3422E6EBBC00B62F88 /* RecordStatusModel.swift */,
+				DDA2CA3622E6EEF800B62F88 /* RecordCameraModel.swift */,
+				DDA2CA3822E6EFAF00B62F88 /* FloatAlertModel.swift */,
 			);
 			path = ExtendedModels;
 			sourceTree = "<group>";
@@ -179,8 +188,11 @@
 			files = (
 				DDA2CA1022E1DF2300B62F88 /* RecordViewController.swift in Sources */,
 				DDB2B1BC22DDA4A600337D56 /* MainViewController.swift in Sources */,
+				DDA2CA3522E6EBBC00B62F88 /* RecordStatusModel.swift in Sources */,
+				DDA2CA3722E6EEF800B62F88 /* RecordCameraModel.swift in Sources */,
 				DDB2B1BA22DDA4A600337D56 /* AppDelegate.swift in Sources */,
 				DDA2CA1222E1E9BE00B62F88 /* EditorViewController.swift in Sources */,
+				DDA2CA3922E6EFAF00B62F88 /* FloatAlertModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +338,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = HiMoveIt/Info.plist;
@@ -345,6 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = HiMoveIt/Info.plist;
