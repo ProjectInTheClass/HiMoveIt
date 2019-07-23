@@ -105,6 +105,7 @@ class RecordViewController: UIViewController{
         transition.subtype = CATransitionSubtype.fromRight
         transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
         view.window!.layer.add(transition, forKey: kCATransition)
+        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Editor", bundle: nil)
         let editorViewController = storyBoard.instantiateViewController(withIdentifier: "editorView") as! EditorViewController
         self.present(editorViewController, animated: false, completion: nil)
