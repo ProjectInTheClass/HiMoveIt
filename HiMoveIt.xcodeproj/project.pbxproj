@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C62703E022E5CD7700403C5E /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62703DF22E5CD7700403C5E /* PreviewController.swift */; };
+		C62703E022E5CD7700403C5E /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62703DF22E5CD7700403C5E /* PreviewViewController.swift */; };
 		DDA2CA0822E1CD3500B62F88 /* Preview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA2CA0722E1CD3500B62F88 /* Preview.storyboard */; };
 		DDA2CA0B22E1CF6500B62F88 /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA2CA0A22E1CF6500B62F88 /* Record.storyboard */; };
 		DDA2CA0D22E1D48300B62F88 /* Editor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA2CA0C22E1D48300B62F88 /* Editor.storyboard */; };
@@ -24,7 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C62703DF22E5CD7700403C5E /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
+		C62703DF22E5CD7700403C5E /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		DDA2CA0722E1CD3500B62F88 /* Preview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preview.storyboard; sourceTree = "<group>"; };
 		DDA2CA0A22E1CF6500B62F88 /* Record.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Record.storyboard; sourceTree = "<group>"; };
 		DDA2CA0C22E1D48300B62F88 /* Editor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Editor.storyboard; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 				DDB2B1BB22DDA4A600337D56 /* MainViewController.swift */,
 				DDA2CA0F22E1DF2300B62F88 /* RecordViewController.swift */,
 				DDA2CA1122E1E9BE00B62F88 /* EditorViewController.swift */,
-				C62703DF22E5CD7700403C5E /* PreviewController.swift */,
+				C62703DF22E5CD7700403C5E /* PreviewViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -194,7 +194,7 @@
 				DDA2CA4722E7286F00B62F88 /* RecordStatusModel.swift in Sources */,
 				DDA2CA4922E7286F00B62F88 /* FloatAlertModel.swift in Sources */,
 				DDB2B1BA22DDA4A600337D56 /* AppDelegate.swift in Sources */,
-				C62703E022E5CD7700403C5E /* PreviewController.swift in Sources */,
+				C62703E022E5CD7700403C5E /* PreviewViewController.swift in Sources */,
 				DDA2CA1222E1E9BE00B62F88 /* EditorViewController.swift in Sources */,
 				DDA2CA4822E7286F00B62F88 /* RecordCameraModel.swift in Sources */,
 			);
