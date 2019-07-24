@@ -13,13 +13,16 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate,UII
     
     @IBOutlet weak var cancelBtn: UIButton!
     
-    let imagePicker:UIImagePickerController!=UIImagePickerController()
-    var flagImagesave = false
-    var videoURL : URL!
+    var recFileURL:NSURL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("URL : "+(recFileURL?.absoluteString)!)
         // Do any additional setup after loading the view.
+    }
+    
+    func setRecURL(fileURL:NSURL){
+        self.recFileURL = fileURL
     }
     
     func goBack(){

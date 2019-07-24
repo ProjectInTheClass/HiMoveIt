@@ -36,6 +36,14 @@
                                             <action selector="clickAddBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NtZ-TD-9jc"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8s-fB-ii1">
+                                        <rect key="frame" x="172" y="25" width="93" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="preview로이동"/>
+                                        <connections>
+                                            <action selector="clickTestButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hT1-oc-wXG"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>

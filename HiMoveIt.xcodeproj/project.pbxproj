@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C62703E022E5CD7700403C5E /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62703DF22E5CD7700403C5E /* PreviewViewController.swift */; };
 		DDA2CA0822E1CD3500B62F88 /* Preview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA2CA0722E1CD3500B62F88 /* Preview.storyboard */; };
 		DDA2CA0B22E1CF6500B62F88 /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA2CA0A22E1CF6500B62F88 /* Record.storyboard */; };
 		DDA2CA0D22E1D48300B62F88 /* Editor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA2CA0C22E1D48300B62F88 /* Editor.storyboard */; };
 		DDA2CA1022E1DF2300B62F88 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2CA0F22E1DF2300B62F88 /* RecordViewController.swift */; };
 		DDA2CA1222E1E9BE00B62F88 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2CA1122E1E9BE00B62F88 /* EditorViewController.swift */; };
+		DDA2CA4722E7286F00B62F88 /* RecordStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2CA4422E7286F00B62F88 /* RecordStatusModel.swift */; };
+		DDA2CA4822E7286F00B62F88 /* RecordCameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2CA4522E7286F00B62F88 /* RecordCameraModel.swift */; };
+		DDA2CA4922E7286F00B62F88 /* FloatAlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2CA4622E7286F00B62F88 /* FloatAlertModel.swift */; };
 		DDB2B1BA22DDA4A600337D56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB2B1B922DDA4A600337D56 /* AppDelegate.swift */; };
 		DDB2B1BC22DDA4A600337D56 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB2B1BB22DDA4A600337D56 /* MainViewController.swift */; };
 		DDB2B1BF22DDA4A600337D56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB2B1BD22DDA4A600337D56 /* Main.storyboard */; };
@@ -20,11 +24,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C62703DF22E5CD7700403C5E /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		DDA2CA0722E1CD3500B62F88 /* Preview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preview.storyboard; sourceTree = "<group>"; };
 		DDA2CA0A22E1CF6500B62F88 /* Record.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Record.storyboard; sourceTree = "<group>"; };
 		DDA2CA0C22E1D48300B62F88 /* Editor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Editor.storyboard; sourceTree = "<group>"; };
 		DDA2CA0F22E1DF2300B62F88 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		DDA2CA1122E1E9BE00B62F88 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
+		DDA2CA4422E7286F00B62F88 /* RecordStatusModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordStatusModel.swift; sourceTree = "<group>"; };
+		DDA2CA4522E7286F00B62F88 /* RecordCameraModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCameraModel.swift; sourceTree = "<group>"; };
+		DDA2CA4622E7286F00B62F88 /* FloatAlertModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatAlertModel.swift; sourceTree = "<group>"; };
 		DDB2B1B622DDA4A600337D56 /* HiMoveIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiMoveIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDB2B1B922DDA4A600337D56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDB2B1BB22DDA4A600337D56 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +53,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C6F1324B22E6FB8400B0C02A /* ExtendedModels */ = {
+			isa = PBXGroup;
+			children = (
+				DDA2CA4622E7286F00B62F88 /* FloatAlertModel.swift */,
+				DDA2CA4522E7286F00B62F88 /* RecordCameraModel.swift */,
+				DDA2CA4422E7286F00B62F88 /* RecordStatusModel.swift */,
+			);
+			path = ExtendedModels;
+			sourceTree = "<group>";
+		};
 		DDA2CA0922E1CE5000B62F88 /* storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +80,7 @@
 				DDB2B1BB22DDA4A600337D56 /* MainViewController.swift */,
 				DDA2CA0F22E1DF2300B62F88 /* RecordViewController.swift */,
 				DDA2CA1122E1E9BE00B62F88 /* EditorViewController.swift */,
+				C62703DF22E5CD7700403C5E /* PreviewViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -85,6 +104,7 @@
 		DDB2B1B822DDA4A600337D56 /* HiMoveIt */ = {
 			isa = PBXGroup;
 			children = (
+				C6F1324B22E6FB8400B0C02A /* ExtendedModels */,
 				DDA2CA0E22E1D4F700B62F88 /* ViewControllers */,
 				DDA2CA0922E1CE5000B62F88 /* storyboards */,
 				DDB2B1B922DDA4A600337D56 /* AppDelegate.swift */,
@@ -171,8 +191,12 @@
 			files = (
 				DDA2CA1022E1DF2300B62F88 /* RecordViewController.swift in Sources */,
 				DDB2B1BC22DDA4A600337D56 /* MainViewController.swift in Sources */,
+				DDA2CA4722E7286F00B62F88 /* RecordStatusModel.swift in Sources */,
+				DDA2CA4922E7286F00B62F88 /* FloatAlertModel.swift in Sources */,
 				DDB2B1BA22DDA4A600337D56 /* AppDelegate.swift in Sources */,
+				C62703E022E5CD7700403C5E /* PreviewViewController.swift in Sources */,
 				DDA2CA1222E1E9BE00B62F88 /* EditorViewController.swift in Sources */,
+				DDA2CA4822E7286F00B62F88 /* RecordCameraModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,8 +342,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A4YM8F5C6V;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = HiMoveIt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -328,7 +353,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kr.jwmsg.HiMoveIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -337,8 +363,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A4YM8F5C6V;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = HiMoveIt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -347,7 +374,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kr.jwmsg.HiMoveIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
