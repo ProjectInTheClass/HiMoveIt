@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MobileCoreServices
 
-class EditorViewController: UIViewController {
+class EditorViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate{
     
     @IBOutlet weak var cancelBtn: UIButton!
     
@@ -37,6 +38,9 @@ class EditorViewController: UIViewController {
     @IBAction func clickCancelBtn(_ sender: Any) {
         goBack()
     }
+    
+    
+
     @IBAction func clickDoneBtn(_ sender: Any) {
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
@@ -51,3 +55,4 @@ class EditorViewController: UIViewController {
     */
 
 }
+
