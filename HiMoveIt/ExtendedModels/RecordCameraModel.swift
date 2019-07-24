@@ -23,7 +23,6 @@ class RecordCameraModel{
     var outFileDir:NSURL?
     
     func setCamera(){
-        captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
         if(captureDevice == nil){
             FloatAlertModel(rootView: rootView!).createAlert(title:"카메라를 불러올 수 없음",message:"카메라를 불러오는데 오류가 존재합니다.\n권한을 확인해 주세요.")
             return
@@ -108,10 +107,55 @@ class RecordCameraModel{
             }
         }
     }
+    func firstSetCam(){
+        if let device = AVCaptureDevice.default(.builtInDualCamera, for: AVMediaType.video, position: .back )
+        {
+            captureDevice = device
+        } else if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .back )
+        {
+            captureDevice = device
+        } else{
+            print("Back Cam is disable")
+            return
+        }
+    }
+    func frontCam(){
+        //captureDevice = AVCaptureDevice.devices().filter{ $0.hasMediaType(AVMediaType.video) && $0.position == .front }.first!
+        if let device = AVCaptureDevice.default(.builtInDualCamera, for: AVMediaType.video, position: .front )
+        {
+            captureDevice = device
+        } else if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .front )
+        {
+            captureDevice = device
+        } else{
+            print("Front Cam is disable")
+            return
+        }
+        setCamera()
+        
+    }
+    func backCam(){
+        //captureDevice = AVCaptureDevice.devices().filter{ $0.hasMediaType(AVMediaType.video) && $0.position == .front }.first!
+        if let device = AVCaptureDevice.default(.builtInDualCamera, for: AVMediaType.video, position: .back )
+        {
+            captureDevice = device
+        } else if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .back )
+        {
+            captureDevice = device
+        } else{
+            print("Back Cam is disable")
+            return
+        }
+        setCamera()
+        
+        
+    }
+    
     
     init(cameraLayer:UIView, rootView:UIViewController) {
         self.cameraLayer = cameraLayer
         self.rootView = rootView
+        self.firstSetCam()
     }
     
 }

@@ -53,7 +53,7 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
     }
 
     @IBAction func clickRecordBtn(_ sender: Any) {
-        if recordStatus!.getRecordOn() { //정지처리
+        if recordStatus!.isRecordOn() { //정지처리
             recordStatus!.setRecordOn(status: false);
             roundBtn(recordBtn)
             let fileURL:NSURL = (recordCameraModel?.stopRec())!
@@ -67,7 +67,7 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
     }
     
     @IBAction func clickFlashBtn(_ sender: Any) {
-        if recordStatus!.getFlashOn() { //플레시 끄기
+        if recordStatus!.isFlashOn() { //플레시 끄기
             recordCameraModel?.offFlash()
             recordStatus!.setFlashOn(status: false);
         }else{ //플레시 켜기
@@ -76,6 +76,23 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
             
         }
     }
+    @IBAction func clickChangeCam(_ sender: Any) {
+        if (recordStatus?.isCamFront())!{ //백으로 전환
+            UIView.transition(with: self.cameraLayer, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+                self.cameraLayer.isHidden = false
+                self.recordCameraModel?.backCam()
+            }, completion: nil)
+            
+            recordStatus!.setCamIsFront(stauts: false)
+        }else{ //프론트로 전환
+            UIView.transition(with: self.cameraLayer, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+                self.cameraLayer.isHidden = false
+                self.recordCameraModel?.frontCam()
+            }, completion: nil)
+            recordStatus!.setCamIsFront(stauts: true)
+        }
+    }
+    
     
     @IBAction func clickCancelBtn(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
