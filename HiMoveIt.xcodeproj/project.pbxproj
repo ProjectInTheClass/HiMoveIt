@@ -16,6 +16,7 @@
 		DDA2CA4722E7286F00B62F88 /* RecordStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2CA4422E7286F00B62F88 /* RecordStatusModel.swift */; };
 		DDA2CA4822E7286F00B62F88 /* RecordCameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2CA4522E7286F00B62F88 /* RecordCameraModel.swift */; };
 		DDA2CA4922E7286F00B62F88 /* FloatAlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2CA4622E7286F00B62F88 /* FloatAlertModel.swift */; };
+		DDA2CA4B22E8304E00B62F88 /* RecordFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2CA4A22E8304E00B62F88 /* RecordFilterModel.swift */; };
 		DDB2B1BA22DDA4A600337D56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB2B1B922DDA4A600337D56 /* AppDelegate.swift */; };
 		DDB2B1BC22DDA4A600337D56 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB2B1BB22DDA4A600337D56 /* MainViewController.swift */; };
 		DDB2B1BF22DDA4A600337D56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB2B1BD22DDA4A600337D56 /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		DDA2CA4422E7286F00B62F88 /* RecordStatusModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordStatusModel.swift; sourceTree = "<group>"; };
 		DDA2CA4522E7286F00B62F88 /* RecordCameraModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCameraModel.swift; sourceTree = "<group>"; };
 		DDA2CA4622E7286F00B62F88 /* FloatAlertModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatAlertModel.swift; sourceTree = "<group>"; };
+		DDA2CA4A22E8304E00B62F88 /* RecordFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFilterModel.swift; sourceTree = "<group>"; };
 		DDB2B1B622DDA4A600337D56 /* HiMoveIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiMoveIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDB2B1B922DDA4A600337D56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDB2B1BB22DDA4A600337D56 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				DDA2CA4622E7286F00B62F88 /* FloatAlertModel.swift */,
 				DDA2CA4522E7286F00B62F88 /* RecordCameraModel.swift */,
 				DDA2CA4422E7286F00B62F88 /* RecordStatusModel.swift */,
+				DDA2CA4A22E8304E00B62F88 /* RecordFilterModel.swift */,
 			);
 			path = ExtendedModels;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			files = (
 				DDA2CA1022E1DF2300B62F88 /* RecordViewController.swift in Sources */,
 				DDB2B1BC22DDA4A600337D56 /* MainViewController.swift in Sources */,
+				DDA2CA4B22E8304E00B62F88 /* RecordFilterModel.swift in Sources */,
 				DDA2CA4722E7286F00B62F88 /* RecordStatusModel.swift in Sources */,
 				DDA2CA4922E7286F00B62F88 /* FloatAlertModel.swift in Sources */,
 				DDB2B1BA22DDA4A600337D56 /* AppDelegate.swift in Sources */,
@@ -343,8 +347,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A4YM8F5C6V;
 				INFOPLIST_FILE = HiMoveIt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -364,8 +368,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A4YM8F5C6V;
 				INFOPLIST_FILE = HiMoveIt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
