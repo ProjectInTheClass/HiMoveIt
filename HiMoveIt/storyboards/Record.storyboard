@@ -62,7 +62,10 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmm-yG-ZHj">
                                                 <rect key="frame" x="232.66666666666663" y="0.0" width="181.33333333333337" height="51"/>
-                                                <state key="normal" title="Button" image="rgb"/>
+                                                <state key="normal" title="Button" image="change"/>
+                                                <connections>
+                                                    <action selector="clickChangeCam:" destination="0qN-xE-Xjo" eventType="touchUpInside" id="ozX-Cp-It6"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -112,7 +115,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="flash" width="32" height="32"/>
-        <image name="rgb" width="32" height="32"/>
+        <image name="change" width="42.666667938232422" height="42.666667938232422"/>
+        <image name="flash" width="42.666667938232422" height="42.666667938232422"/>
     </resources>
 </document>
