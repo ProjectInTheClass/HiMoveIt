@@ -15,6 +15,8 @@ class PreviewController: UIViewController {
     //let image = UIImage(named: "Image") // 일단은 Asset에 있는 예시사진을 넣어두었고, 추후에 넘어온 이미지로 그 대상을 변경시켜줘야함.
     
     
+    // commit test
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
