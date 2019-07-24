@@ -13,6 +13,7 @@ class RecordStatusModel{
     var recordOn:Bool?
     var flashOn:Bool?
     var filterNum:Int?
+    var camFront:Bool?
     
     
     
@@ -27,20 +28,26 @@ class RecordStatusModel{
     func setFilterNum(idx:Int){
         self.filterNum = idx
     }
-    
-    func getRecordOn() -> Bool{
+    func setCamIsFront(stauts:Bool){
+        self.camFront = stauts
+    }
+    func isRecordOn() -> Bool{
         return self.recordOn!
     }
-    func getFlashOn() -> Bool{
+    func isFlashOn() -> Bool{
         return self.flashOn!
     }
     func getFilterNum() -> Int{
         return self.filterNum!
     }
+    func isCamFront() -> Bool{
+        return self.camFront!
+    }
     
     init(){
         setRecordOn(status: false)
         setFlashOn(status: false)
+        setCamIsFront(stauts: false)
         setFilterNum(idx: 0)
     }
     
