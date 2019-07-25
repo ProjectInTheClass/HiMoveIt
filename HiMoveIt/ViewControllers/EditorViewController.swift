@@ -11,10 +11,11 @@ import MobileCoreServices
 import AVFoundation
 import AVKit
 
-class EditorViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate{
+class EditorViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var playGround: UIView!
+    @IBOutlet weak var getTimeBar: UISlider!
     
     var recFileURL:NSURL?
     var playerLayer:AVPlayerLayer?
@@ -26,13 +27,11 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate,UII
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print("URL : "+(recFileURL?.filePathURL?.absoluteString)!)
-        // Do any additional setup after loading the view.
     }
     
     func setRecURL(fileURL:NSURL){
         self.recFileURL = fileURL
-        self.setParamVideo()
+        
     }
     
     func goBack(){
@@ -46,28 +45,53 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate,UII
     }
     func setParamVideo(){
         playAsset = AVAsset(url: recFileURL! as URL)
-        //playAsset?.loadValuesAsynchronously(forKeys: <#T##[String]#>, completionHandler: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
-        self.playerItem = AVPlayerItem(asset: self.playAsset!)
-        self.player = AVPlayer(playerItem:self.playerItem)
-        self.playerLayer = AVPlayerLayer(player: self.player)
-        self.playerLayer!.videoGravity = .resize
-        self.playOnReady = true;
+        
+        playAsset?.loadValuesAsynchronously(forKeys:["playable"] , completionHandler: {
+            var err:NSError? = nil
+            let status = self.playAsset!.statusOfValue(forKey: "playable", error: &err)
+            
+            switch status {
+            case .loaded:
+                self.procNextPreparing()
+                break
+            case .failed:
+                print("error:",err as Any)
+                break
+            default:
+                print("error:",err as Any)
+                break
+            }
+        })
         
         //로드하는 시간동안 본 함수가 살아있지 않고 죽어버리면 뒤져버림;;;;;;
     }
-    
-    override func viewDidLayoutSubviews() {            // subView인 playerLayer의 영역 설정
-        super.viewDidLayoutSubviews()
+    func procNextPreparing() {
+        self.playerItem = AVPlayerItem(asset: self.playAsset!)
+        self.player = AVPlayer(playerItem:self.playerItem)
+        self.playerLayer = AVPlayerLayer(player: self.player)
+        self.playerLayer!.videoGravity = .resizeAspectFill
+        self.playOnReady = true;
         
+        self.videoPlay();
     }
-    
-    override func viewDidAppear(_ animated: Bool) {        // view가 나타날때 player 재생
-        super.viewDidAppear(animated)
+    func setSliderValue(data:Double){
+        print("current time : ", data)
+        let timerate = (data / (playAsset?.duration.seconds)!) * 100
+        self.getTimeBar.setValue(Float(timerate), animated: true)
+    }
+    func videoPlay(){
         if(playOnReady){
             self.playerLayer!.frame = self.playGround.bounds
             self.playGround.layer.addSublayer(self.playerLayer!)
+            let interval = CMTime(seconds: 0.005, preferredTimescale: CMTimeScale(NSEC_PER_MSEC))
+            let mainQueue = DispatchQueue.main
+            self.player?.addPeriodicTimeObserver(forInterval: interval, queue: mainQueue, using: { self.setSliderValue(data: $0.seconds)})
             player!.play()
         }
+    }
+    override func viewDidAppear(_ animated: Bool) {        // view가 나타날때 player 재생
+        super.viewDidAppear(animated)
+        self.setParamVideo()
     }
     @IBAction func clickCancelBtn(_ sender: Any) {
         goBack()
@@ -79,6 +103,12 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate,UII
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func chantedSlider(_ sender: Any) {
+        let sliderValue:Float = self.getTimeBar.value
+        let realTime = Double( sliderValue/100 ) * ((playAsset?.duration.seconds)!)
+        let seekTime = CMTime(seconds: realTime, preferredTimescale:(playAsset?.duration.timescale)!)
+        player?.seek(to: seekTime)
+    }
     /*
     // MARK: - Navigation
 

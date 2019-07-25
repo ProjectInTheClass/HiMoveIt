@@ -21,14 +21,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zS3-Ir-yVl">
                                 <rect key="frame" x="0.0" y="20" width="414" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuG-Ju-m45" userLabel="doneBtn">
-                                        <rect key="frame" x="361" y="21" width="37" height="38"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <state key="normal" title="완료"/>
-                                        <connections>
-                                            <action selector="clickDoneBtn:" destination="Ku9-NP-qRW" eventType="touchUpInside" id="vzI-ma-qUZ"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFE-CD-AaF">
                                         <rect key="frame" x="16" y="21" width="37" height="38"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -42,21 +34,41 @@
                                 <constraints>
                                     <constraint firstItem="YFE-CD-AaF" firstAttribute="centerY" secondItem="zS3-Ir-yVl" secondAttribute="centerY" id="ifh-kf-kpa"/>
                                     <constraint firstAttribute="height" constant="80" id="nd0-aF-D7n"/>
-                                    <constraint firstAttribute="trailing" secondItem="vuG-Ju-m45" secondAttribute="trailing" constant="16" id="rBd-l1-T8h"/>
-                                    <constraint firstItem="vuG-Ju-m45" firstAttribute="centerY" secondItem="zS3-Ir-yVl" secondAttribute="centerY" id="rVi-Rn-KvX"/>
                                     <constraint firstItem="YFE-CD-AaF" firstAttribute="leading" secondItem="zS3-Ir-yVl" secondAttribute="leading" constant="16" id="uGB-rL-1GZ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="irY-C2-t0b">
                                 <rect key="frame" x="0.0" y="655" width="414" height="81"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuG-Ju-m45" userLabel="doneBtn">
+                                        <rect key="frame" x="361" y="21.666666666666629" width="37" height="38"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="완료"/>
+                                        <connections>
+                                            <action selector="clickDoneBtn:" destination="Ku9-NP-qRW" eventType="touchUpInside" id="vzI-ma-qUZ"/>
+                                        </connections>
+                                    </button>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="LoT-VQ-Jkl">
+                                        <rect key="frame" x="14" y="25.666666666666629" width="333" height="31"/>
+                                        <connections>
+                                            <action selector="chantedSlider:" destination="Ku9-NP-qRW" eventType="valueChanged" id="oEo-1x-YLA"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="vuG-Ju-m45" firstAttribute="leading" secondItem="LoT-VQ-Jkl" secondAttribute="trailing" constant="16" id="9li-Cv-hnP"/>
+                                    <constraint firstItem="LoT-VQ-Jkl" firstAttribute="centerY" secondItem="irY-C2-t0b" secondAttribute="centerY" id="9nR-Lf-E5v"/>
+                                    <constraint firstItem="vuG-Ju-m45" firstAttribute="centerY" secondItem="irY-C2-t0b" secondAttribute="centerY" id="OaX-ch-vdK"/>
+                                    <constraint firstItem="LoT-VQ-Jkl" firstAttribute="leading" secondItem="irY-C2-t0b" secondAttribute="leading" constant="16" id="WlV-6P-OG7"/>
+                                    <constraint firstAttribute="trailing" secondItem="LoT-VQ-Jkl" secondAttribute="trailing" constant="69" id="a8N-mL-KUu"/>
                                     <constraint firstAttribute="height" constant="81" id="czF-5b-T6t"/>
+                                    <constraint firstAttribute="trailing" secondItem="vuG-Ju-m45" secondAttribute="trailing" constant="16" id="vwJ-K3-YiB"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ieg-DM-o8w">
                                 <rect key="frame" x="0.0" y="100" width="414" height="555"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -76,7 +88,8 @@
                     </view>
                     <connections>
                         <outlet property="cancelBtn" destination="YFE-CD-AaF" id="McI-f1-fV0"/>
-                        <outlet property="playGround" destination="Ieg-DM-o8w" id="33P-Np-XaZ"/>
+                        <outlet property="getTimeBar" destination="LoT-VQ-Jkl" id="gtj-Al-03u"/>
+                        <outlet property="playGround" destination="Ieg-DM-o8w" id="EGW-rs-u7p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MRF-Qr-6Oc" userLabel="First Responder" sceneMemberID="firstResponder"/>
