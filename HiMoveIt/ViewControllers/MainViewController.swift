@@ -8,7 +8,8 @@
 
 import UIKit
 import Photos
-
+import AVFoundation
+import MobileCoreServices
 
 class MainViewController: UIViewController{
     
@@ -16,9 +17,7 @@ class MainViewController: UIViewController{
     var arrImage = ["1.png","2.png","3.png","4.png","5.png","6.png","7.png","8.png","9.png","10.png","11.png","12.png","13.png","14.png","15.png","16.png","17.png","18.png","19.png"]
     var urlImg = [URL]()
     
-    
-
-    @IBOutlet var collectioView: UICollectionView!
+    @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,22 +30,25 @@ class MainViewController: UIViewController{
         for imgStr in arrImage{
             let document = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             //document안의 url
-            print(document)
-            let imgUrl = document.appendingPathComponent(imgStr,isDirectory: true) //file의 이름 전달
-            print(imgUrl.path)
+            //print(document)
+            let imgUrl = document.appendingPathComponent(imgStr,isDirectory: true)
+            //document directroy 내로 imgStr image 생성
+            //print(imgUrl.path)
             
             if !FileManager.default.fileExists(atPath: imgUrl.path){
+                //file안에 img가 존재하는지 확인 해준다
                 do{
                     try UIImage(named: imgStr)!.pngData()?.write(to: imgUrl)
-                    print("image add successfully")
+                    //print("image add successfully")
                 }catch{
-                    print("image not added")
+                    //print("image not added")
                 }
             }
             urlImg.append(imgUrl)
         }
         
     }
+    
     
     
     @IBOutlet weak var addBtn: UIButton!
@@ -69,6 +71,14 @@ class MainViewController: UIViewController{
         self.present(previewController, animated: true, completion: nil)
     }
     
+    func loadPreview(cellImage:UIImage){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Preview", bundle: nil)
+        let previewController = storyBoard.instantiateViewController(withIdentifier: "preview") as! PreviewController
+        previewController.setImage(image: cellImage)
+        self.present(previewController, animated: true, completion: nil)
+    }
+    
+    
     @IBAction func clickTestButton(_ sender: Any) {
         loadPreview()
     }
@@ -78,10 +88,12 @@ class MainViewController: UIViewController{
         loadRecordView()
     }
     
+    
 }
 
-class imageCollectionViewCellModel: UICollectionViewCell {
+class ImageCollectionViewCellModel: UICollectionViewCell {
     @IBOutlet var imageEx: UIImageView!
+    
     
 }
 
@@ -91,7 +103,7 @@ extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! imageCollectionViewCellModel
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCollectionViewCellModel //dowm size casting
         
         cell.imageEx.image = UIImage(contentsOfFile: urlImg[indexPath.row].path)
         return cell
@@ -107,8 +119,14 @@ extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSourc
         return 1
     }//up down
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cellImage:UIImage = (collectionView.cellForItem(at: indexPath) as! ImageCollectionViewCellModel).imageEx.image!
+        self.loadPreview(cellImage: cellImage)
     
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }//side
 }
+
+
