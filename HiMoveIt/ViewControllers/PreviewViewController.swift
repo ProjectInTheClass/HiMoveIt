@@ -1,12 +1,10 @@
 //
-//  PreviewController.swift
-//  HiMoveIt
-//
-//  Created by KangKyung on 22/07/2019.
-//  Copyright © 2019 jwmsg. All rights reserved.
-//
 
 import UIKit
+import AVFoundation
+import AVKit
+import Photos
+
 
 class PreviewController: UIViewController {
     
@@ -14,22 +12,37 @@ class PreviewController: UIViewController {
     //let URL:NSURL = NSURL(string: "https://www.naver.com")! // 같이 들어가는 URL [ 삭제 가능 ]
     //let image = UIImage(named: "Image") // 일단은 Asset에 있는 예시사진을 넣어두었고, 추후에 넘어온 이미지로 그 대상을 변경시켜줘야함.
     
+    @IBOutlet var prevViewImage: UIImageView!
     
-    @IBOutlet var preViewImage: UIImageView!
     
     var image: UIImage = UIImage()
+    var imageUrl : URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
-    func setImage(image:UIImage){
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let path = Bundle.main.path(forResource: "20", ofType: "mov") else{
+            return
+        }
+        let videoURL = URL(fileURLWithPath: path)
+        let player = AVPlayer(url: videoURL)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        
+        self.present(playerViewController, animated: true){
+            playerViewController.player?.play()
+        }
+    }
+    
+    func setImage(image: UIImage){
         self.image = image
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        preViewImage.image = image
+        prevViewImage.image = image
     }
     
     @IBAction func btnShare(_ sender: Any) {
@@ -62,4 +75,3 @@ class PreviewController: UIViewController {
     }
     
 }
-

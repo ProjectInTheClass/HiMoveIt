@@ -36,14 +36,6 @@
                                             <action selector="clickAddBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NtZ-TD-9jc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8s-fB-ii1">
-                                        <rect key="frame" x="172" y="25" width="93" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="preview로이동"/>
-                                        <connections>
-                                            <action selector="clickTestButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hT1-oc-wXG"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -72,12 +64,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="135" height="138"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sek-Yu-F2d">
-                                                    <rect key="frame" x="0.0" y="0.0" width="135" height="138"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sek-Yu-F2d">
+                                                    <rect key="frame" x="0.0" y="0.0" width="135" height="145"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="sek-Yu-F2d" firstAttribute="top" secondItem="naj-Ab-hQ8" secondAttribute="top" id="Kx7-Lj-2lf"/>
                                             <constraint firstItem="sek-Yu-F2d" firstAttribute="leading" secondItem="naj-Ab-hQ8" secondAttribute="leading" id="Riy-Lb-a94"/>
@@ -85,13 +77,13 @@
                                             <constraint firstAttribute="bottom" secondItem="sek-Yu-F2d" secondAttribute="bottom" id="rod-sC-rCq"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="imageEx" destination="sek-Yu-F2d" id="Hi0-c3-eIO"/>
+                                            <outlet property="imageEx" destination="sek-Yu-F2d" id="W4W-wf-PTU"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="yhy-gA-xwj"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="qcx-Nf-wtr"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="MYZ-dy-vzk"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="8IY-0R-NTR"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -118,12 +110,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addBtn" destination="BgZ-wU-0d4" id="Gli-8v-i6G"/>
-                        <outlet property="collectionView" destination="fCs-FZ-LIk" id="UQz-ya-V8e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2554" y="-206"/>
+            <point key="canvasLocation" x="2553.6231884057975" y="-206.25000000000003"/>
         </scene>
     </scenes>
 </document>

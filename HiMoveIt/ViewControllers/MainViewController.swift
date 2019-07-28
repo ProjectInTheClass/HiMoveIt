@@ -1,3 +1,4 @@
+//동영상에서 썸네일 따와서 갤러리에 출력해주고 출력
 //
 //  ViewController.swift
 //  HiMoveIt
@@ -14,14 +15,15 @@ import MobileCoreServices
 class MainViewController: UIViewController{
     
     let cellIdentifier: String = "cell"
-    var arrImage = ["1.png","2.png","3.png","4.png","5.png","6.png","7.png","8.png","9.png","10.png","11.png","12.png","13.png","14.png","15.png","16.png","17.png","18.png","19.png"]
-    var urlImg = [URL]()
+    var arrImage = ["01.mov","02.mov","20.mov","21.mov","22.mov","23.mov","24.mov"]
+    var urlImg = [UIImage]()
     
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         saveImages()
+        
     }
     
     
@@ -29,26 +31,37 @@ class MainViewController: UIViewController{
         
         for imgStr in arrImage{
             let document = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            //document안의 url
+            //모든 app의 표준 폴더인 document 폴더를 가지고 온다는 뜻
             //print(document)
-            let imgUrl = document.appendingPathComponent(imgStr,isDirectory: true)
-            //document directroy 내로 imgStr image 생성
+            let imgUrl: URL = document.appendingPathComponent(imgStr,isDirectory: true)
+            //모든 내용이 저장된 데이터베이스 폴더를 가리키는 경로를 구축합니다.(폴더 안에 해당파일 가르키기)
             //print(imgUrl.path)
+            let thumbnail : UIImage = self.imageFromVideo(url: imgUrl, at: 8)!
             
-            if !FileManager.default.fileExists(atPath: imgUrl.path){
-                //file안에 img가 존재하는지 확인 해준다
-                do{
-                    try UIImage(named: imgStr)!.pngData()?.write(to: imgUrl)
-                    //print("image add successfully")
-                }catch{
-                    //print("image not added")
-                }
-            }
-            urlImg.append(imgUrl)
+            urlImg.append(thumbnail)
+            
         }
         
     }
     
+    func imageFromVideo(url: URL, at time: TimeInterval) -> UIImage? {
+        let asset = AVURLAsset(url: url)
+        
+        let assetIG = AVAssetImageGenerator(asset: asset)
+        assetIG.appliesPreferredTrackTransform = true
+        assetIG.apertureMode = AVAssetImageGenerator.ApertureMode.encodedPixels
+        
+        let cmTime = CMTime(seconds: time, preferredTimescale: 10)
+        let thumbnailImageRef: CGImage
+        do {
+            thumbnailImageRef = try assetIG.copyCGImage(at: cmTime, actualTime: nil)
+        } catch let error {
+            print("Error: \(error)")
+            return nil
+        }
+        
+        return UIImage(cgImage: thumbnailImageRef)
+    }
     
     
     @IBOutlet weak var addBtn: UIButton!
@@ -91,12 +104,15 @@ class MainViewController: UIViewController{
     
 }
 
+
+//collectionviewcell
 class ImageCollectionViewCellModel: UICollectionViewCell {
     @IBOutlet var imageEx: UIImageView!
     
-    
 }
 
+
+//extiension
 extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return urlImg.count
@@ -105,7 +121,8 @@ extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCollectionViewCellModel //dowm size casting
         
-        cell.imageEx.image = UIImage(contentsOfFile: urlImg[indexPath.row].path)
+        cell.imageEx.image = urlImg[indexPath.row]
+        
         return cell
     }
     
@@ -122,11 +139,10 @@ extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cellImage:UIImage = (collectionView.cellForItem(at: indexPath) as! ImageCollectionViewCellModel).imageEx.image!
         self.loadPreview(cellImage: cellImage)
-    
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }//side
 }
-
 
