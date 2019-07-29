@@ -16,7 +16,7 @@ class MainViewController: UIViewController{
     
     let cellIdentifier: String = "cell"
     var arrImage = ["01.mov","02.mov","20.mov","21.mov","22.mov","23.mov","24.mov"]
-    var urlImg = [UIImage]()
+
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -25,7 +25,13 @@ class MainViewController: UIViewController{
         saveImages()
         
     }
+struct urlAndImage
+{
+    var urlImg = [UIImage]()
+    var urlVideo = [URL]()
+    }
     
+    var structure = urlAndImage()
     
     func saveImages() {
         
@@ -36,31 +42,31 @@ class MainViewController: UIViewController{
             let imgUrl: URL = document.appendingPathComponent(imgStr,isDirectory: true)
             //모든 내용이 저장된 데이터베이스 폴더를 가리키는 경로를 구축합니다.(폴더 안에 해당파일 가르키기)
             //print(imgUrl.path)
-            let thumbnail : UIImage = self.imageFromVideo(url: imgUrl, at: 8)!
+            let thumbnail : UIImage = self.imgFromVideo(url: imgUrl, at: 8)!
             
-            urlImg.append(thumbnail)
-            
+           structure.urlImg.append(thumbnail)
+           structure.urlVideo.append(imgUrl)
         }
         
     }
     
-    func imageFromVideo(url: URL, at time: TimeInterval) -> UIImage? {
-        let asset = AVURLAsset(url: url)
+    func imgFromVideo(url: URL, at time: TimeInterval) -> UIImage? {
+        let assetUrl = AVURLAsset(url: url)
         
-        let assetIG = AVAssetImageGenerator(asset: asset)
-        assetIG.appliesPreferredTrackTransform = true
-        assetIG.apertureMode = AVAssetImageGenerator.ApertureMode.encodedPixels
+        let assetImg = AVAssetImageGenerator(asset: assetUrl)
+        assetImg.appliesPreferredTrackTransform = true
+        assetImg.apertureMode = AVAssetImageGenerator.ApertureMode.encodedPixels
         
         let cmTime = CMTime(seconds: time, preferredTimescale: 10)
-        let thumbnailImageRef: CGImage
+        let thumbnailImg: CGImage
         do {
-            thumbnailImageRef = try assetIG.copyCGImage(at: cmTime, actualTime: nil)
+            thumbnailImg = try assetImg.copyCGImage(at: cmTime, actualTime: nil)
         } catch let error {
             print("Error: \(error)")
             return nil
         }
         
-        return UIImage(cgImage: thumbnailImageRef)
+        return UIImage(cgImage: thumbnailImg)
     }
     
     
@@ -84,10 +90,10 @@ class MainViewController: UIViewController{
         self.present(previewController, animated: true, completion: nil)
     }
     
-    func loadPreview(cellImage:UIImage){
+    func loadPreview(cellImage:UIImage, cellVideo:URL){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Preview", bundle: nil)
         let previewController = storyBoard.instantiateViewController(withIdentifier: "preview") as! PreviewController
-        previewController.setImage(image: cellImage)
+        previewController.setImage(image: cellImage,url: cellVideo)
         self.present(previewController, animated: true, completion: nil)
     }
     
@@ -115,13 +121,13 @@ class ImageCollectionViewCellModel: UICollectionViewCell {
 //extiension
 extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return urlImg.count
+        return structure.urlImg.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCollectionViewCellModel //dowm size casting
         
-        cell.imageEx.image = urlImg[indexPath.row]
+        cell.imageEx.image = structure.urlImg[indexPath.row]
         
         return cell
     }
@@ -138,7 +144,9 @@ extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cellImage:UIImage = (collectionView.cellForItem(at: indexPath) as! ImageCollectionViewCellModel).imageEx.image!
-        self.loadPreview(cellImage: cellImage)
+        let cellVideo:URL = structure.urlVideo[indexPath.row]
+ 
+        self.loadPreview(cellImage: cellImage,cellVideo: cellVideo)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

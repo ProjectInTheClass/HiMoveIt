@@ -16,7 +16,7 @@ class PreviewController: UIViewController {
     
     
     var image: UIImage = UIImage()
-    var imageUrl : URL!
+    var imageUrl: URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +24,7 @@ class PreviewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let path = Bundle.main.path(forResource: "20", ofType: "mov") else{
-            return
-        }
-        let videoURL = URL(fileURLWithPath: path)
-        let player = AVPlayer(url: videoURL)
+        let player = AVPlayer(url: imageUrl)
         let playerViewController = AVPlayerViewController()
         playerViewController.player = player
         
@@ -37,8 +33,9 @@ class PreviewController: UIViewController {
         }
     }
     
-    func setImage(image: UIImage){
+    func setImage(image: UIImage, url: URL){
         self.image = image
+        self.imageUrl = url
     }
     
     override func viewDidAppear(_ animated: Bool) {
