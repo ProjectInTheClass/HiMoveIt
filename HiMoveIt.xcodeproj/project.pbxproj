@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93E2A0E535F3A47968A355B9 /* Pods_HiMoveIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6DE6FB166F86CC6667DD3AE /* Pods_HiMoveIt.framework */; };
 		C603E0D122E885FB000571CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C603E0D022E885FB000571CF /* Assets.xcassets */; };
 		C62703E022E5CD7700403C5E /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62703DF22E5CD7700403C5E /* PreviewViewController.swift */; };
-		C69AEC0822E9CB7E00956B2A /* Image.png in Resources */ = {isa = PBXBuildFile; fileRef = C69AEC0722E9CB7E00956B2A /* Image.png */; };
+		C6E3E51522EFEC9A006D6B41 /* Image.gif in Resources */ = {isa = PBXBuildFile; fileRef = C6E3E51422EFEC9A006D6B41 /* Image.gif */; };
 		DDA2CA0822E1CD3500B62F88 /* Preview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA2CA0722E1CD3500B62F88 /* Preview.storyboard */; };
 		DDA2CA0B22E1CF6500B62F88 /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA2CA0A22E1CF6500B62F88 /* Record.storyboard */; };
 		DDA2CA0D22E1D48300B62F88 /* Editor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA2CA0C22E1D48300B62F88 /* Editor.storyboard */; };
@@ -26,9 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD6CD127F6C3D5D1F1DA1131 /* Pods-HiMoveIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiMoveIt.debug.xcconfig"; path = "Target Support Files/Pods-HiMoveIt/Pods-HiMoveIt.debug.xcconfig"; sourceTree = "<group>"; };
 		C603E0D022E885FB000571CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C62703DF22E5CD7700403C5E /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
-		C69AEC0722E9CB7E00956B2A /* Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image.png; sourceTree = "<group>"; };
+		C6E3E51422EFEC9A006D6B41 /* Image.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Image.gif; sourceTree = "<group>"; };
 		DDA2CA0722E1CD3500B62F88 /* Preview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preview.storyboard; sourceTree = "<group>"; };
 		DDA2CA0A22E1CF6500B62F88 /* Record.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Record.storyboard; sourceTree = "<group>"; };
 		DDA2CA0C22E1D48300B62F88 /* Editor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Editor.storyboard; sourceTree = "<group>"; };
@@ -44,6 +46,8 @@
 		DDB2B1BE22DDA4A600337D56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DDB2B1C322DDA4A700337D56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDB2B1C522DDA4A700337D56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAE8C7709B88C8F4C22DF21B /* Pods-HiMoveIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiMoveIt.release.xcconfig"; path = "Target Support Files/Pods-HiMoveIt/Pods-HiMoveIt.release.xcconfig"; sourceTree = "<group>"; };
+		F6DE6FB166F86CC6667DD3AE /* Pods_HiMoveIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HiMoveIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,12 +55,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93E2A0E535F3A47968A355B9 /* Pods_HiMoveIt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A8EF7366BCF27210B16D399 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AD6CD127F6C3D5D1F1DA1131 /* Pods-HiMoveIt.debug.xcconfig */,
+				EAE8C7709B88C8F4C22DF21B /* Pods-HiMoveIt.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AFCA05DE910C922D38994355 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F6DE6FB166F86CC6667DD3AE /* Pods_HiMoveIt.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C6F1324B22E6FB8400B0C02A /* ExtendedModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +117,8 @@
 			children = (
 				DDB2B1B822DDA4A600337D56 /* HiMoveIt */,
 				DDB2B1B722DDA4A600337D56 /* Products */,
+				5A8EF7366BCF27210B16D399 /* Pods */,
+				AFCA05DE910C922D38994355 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,7 +138,7 @@
 				DDA2CA0922E1CE5000B62F88 /* storyboards */,
 				DDB2B1B922DDA4A600337D56 /* AppDelegate.swift */,
 				C603E0D022E885FB000571CF /* Assets.xcassets */,
-				C69AEC0722E9CB7E00956B2A /* Image.png */,
+				C6E3E51422EFEC9A006D6B41 /* Image.gif */,
 				DDB2B1C222DDA4A700337D56 /* LaunchScreen.storyboard */,
 				DDB2B1C522DDA4A700337D56 /* Info.plist */,
 			);
@@ -128,9 +152,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDB2B1C822DDA4A700337D56 /* Build configuration list for PBXNativeTarget "HiMoveIt" */;
 			buildPhases = (
+				20EE762D73D1910E38949622 /* [CP] Check Pods Manifest.lock */,
 				DDB2B1B222DDA4A600337D56 /* Sources */,
 				DDB2B1B322DDA4A600337D56 /* Frameworks */,
 				DDB2B1B422DDA4A600337D56 /* Resources */,
+				6D38D16754471A250395FADE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -179,7 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C69AEC0822E9CB7E00956B2A /* Image.png in Resources */,
+				C6E3E51522EFEC9A006D6B41 /* Image.gif in Resources */,
 				DDB2B1C422DDA4A700337D56 /* LaunchScreen.storyboard in Resources */,
 				DDB2B1BF22DDA4A600337D56 /* Main.storyboard in Resources */,
 				DDA2CA0822E1CD3500B62F88 /* Preview.storyboard in Resources */,
@@ -190,6 +216,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20EE762D73D1910E38949622 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HiMoveIt-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D38D16754471A250395FADE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HiMoveIt/Pods-HiMoveIt-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HiMoveIt/Pods-HiMoveIt-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HiMoveIt/Pods-HiMoveIt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DDB2B1B222DDA4A600337D56 /* Sources */ = {
@@ -348,18 +416,19 @@
 		};
 		DDB2B1C922DDA4A700337D56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD6CD127F6C3D5D1F1DA1131 /* Pods-HiMoveIt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SPWQVPZS24;
+				DEVELOPMENT_TEAM = A4YM8F5C6V;
 				INFOPLIST_FILE = HiMoveIt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = KangKyung.PracticeProject;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.jwmsg.HiMoveIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -369,18 +438,19 @@
 		};
 		DDB2B1CA22DDA4A700337D56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EAE8C7709B88C8F4C22DF21B /* Pods-HiMoveIt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SPWQVPZS24;
+				DEVELOPMENT_TEAM = A4YM8F5C6V;
 				INFOPLIST_FILE = HiMoveIt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = KangKyung.PracticeProject;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.jwmsg.HiMoveIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

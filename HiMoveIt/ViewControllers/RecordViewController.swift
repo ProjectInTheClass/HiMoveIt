@@ -23,7 +23,6 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
         super.viewDidLoad()
         self.recordCameraModel = RecordCameraModel(cameraLayer: cameraLayer, rootView: self)
         self.recordStatus = RecordStatusModel()
-        self.recordCameraModel?.setCamera()
         self.roundBtn(recordBtn);
         
     }
@@ -64,6 +63,14 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
             recordCameraModel?.startRec()
             
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {        // view가 나타날때 player 재생
+        super.viewDidAppear(animated)
+        UIView.transition(with: self.cameraLayer, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+            self.cameraLayer.isHidden = false
+            self.recordCameraModel?.setCamera()
+        }, completion: nil)
     }
     
     @IBAction func clickFlashBtn(_ sender: Any) {
