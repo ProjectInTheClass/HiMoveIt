@@ -89,6 +89,7 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate, UI
             player!.play()
         }
     }
+    
     override func viewDidAppear(_ animated: Bool) {        // view가 나타날때 player 재생
         super.viewDidAppear(animated)
         self.setParamVideo()
