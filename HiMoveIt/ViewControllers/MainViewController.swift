@@ -10,19 +10,15 @@ import UIKit
 import Photos
 
 class MainViewController: UIViewController{
- 
-    @IBOutlet weak var collectionView : UICollectionView!
     @IBOutlet weak var addBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
     func loadRecordView(){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Record", bundle: nil)
         let recordViewController = storyBoard.instantiateViewController(withIdentifier: "recordView") as! RecordViewController
         self.present(recordViewController, animated: true, completion: nil)
     }
-    
     func loadPreview(){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Preview", bundle: nil)
         let previewController = storyBoard.instantiateViewController(withIdentifier: "preview") as! PreviewController

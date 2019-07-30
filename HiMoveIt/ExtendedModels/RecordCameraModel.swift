@@ -67,12 +67,14 @@ class RecordCameraModel{
         let filename = dateFormatter.string(from: NSDate() as Date)
         let dirURL:NSURL = NSURL(fileURLWithPath: documentPath!)
         let fileURL:NSURL = dirURL.appendingPathComponent(filename+".mp4")! as NSURL
-        movieOutput?.startRecording(to: fileURL as URL, recordingDelegate: rootView as! AVCaptureFileOutputRecordingDelegate)
+        self.movieOutput?.startRecording(to: fileURL as URL, recordingDelegate: rootView as! AVCaptureFileOutputRecordingDelegate)
         outFileDir = fileURL
     }
     
     func stopRec() -> NSURL{
-        movieOutput?.stopRecording()
+        self.movieOutput?.stopRecording()
+        self.dismissCaptureSession()
+        
         return self.outFileDir!
     }
     
@@ -131,6 +133,9 @@ class RecordCameraModel{
             print("Front Cam is disable")
             return
         }
+        
+        self.movieOutput?.stopRecording()
+        self.dismissCaptureSession()
         setCamera()
         
     }
@@ -146,6 +151,9 @@ class RecordCameraModel{
             print("Back Cam is disable")
             return
         }
+        
+        self.movieOutput?.stopRecording()
+        self.dismissCaptureSession()
         setCamera()
         
         
