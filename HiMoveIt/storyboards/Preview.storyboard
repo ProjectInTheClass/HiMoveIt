@@ -113,7 +113,7 @@
                         <viewLayoutGuide key="safeArea" id="R4l-vi-qqp"/>
                     </view>
                     <connections>
-                        <outlet property="prevViewImage" destination="fZY-1x-ZoF" id="CIm-hk-Qxj"/>
+                        <outlet property="prevViewImage" destination="fZY-1x-ZoF" id="AQ4-NF-4UP"/>
                         <outlet property="view" destination="yZy-2Z-ct7" id="RCh-ot-U9B"/>
                     </connections>
                 </viewController>

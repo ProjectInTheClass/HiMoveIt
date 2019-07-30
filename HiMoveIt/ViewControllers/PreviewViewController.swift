@@ -11,8 +11,10 @@ class PreviewController: UIViewController {
     
     //let text = "공유할 이미지(APNG)에 대한 이름" // 공유할 때 같이 들어가는 텍스트 [ 삭제 가능 ]
     //let URL:NSURL = NSURL(string: "https://www.naver.com")! // 같이 들어가는 URL [ 삭제 가능 ]
-    let image = URL(fileURLWithPath: Bundle.main.path(forResource: "Image", ofType: "gif") ?? "") // 일단은 Asset에 있는 예시사진을 넣어두었고, 추후에 넘어온 이미지로 그 대상을 변경시켜줘야함.
-
+//    let image = URL(fileURLWithPath: Bundle.main.path(forResource: "Image", ofType: "gif") ?? "") // 일단은 Asset에 있는 예시사진을 넣어두었고, 추후에 넘어온 이미지로 그 대상을 변경시켜줘야함.
+    @IBOutlet var prevViewImage: UIImageView!
+    var image: UIImage = UIImage()
+    var imageUrl: URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
