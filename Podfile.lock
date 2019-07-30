@@ -1,0 +1,16 @@
+PODS:
+  - Regift (1.6.0)
+
+DEPENDENCIES:
+  - Regift (~> 1.6)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Regift
+
+SPEC CHECKSUMS:
+  Regift: a7c1a7e377c60bfc34301d6f532e099e5ae109a8
+
+PODFILE CHECKSUM: 98a13d992166e7706c7fdf396817b9b07b49e702
+
+COCOAPODS: 1.7.5
