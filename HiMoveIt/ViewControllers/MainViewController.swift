@@ -35,7 +35,7 @@ struct urlAndImage
     
     func saveImages() {
         
-        for imgStr in 	{
+        for imgStr in arrImage{
             let document = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             //모든 app의 표준 폴더인 document 폴더를 가지고 온다는 뜻
             //print(document)
