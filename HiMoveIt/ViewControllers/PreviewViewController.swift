@@ -11,7 +11,7 @@ class PreviewController: UIViewController {
     //let URL:NSURL = NSURL(string: "https://www.naver.com")! // 같이 들어가는 URL [ 삭제 가능 ]
     //let image = URL(fileURLWithPath: Bundle.main.path(forResource: "Image", ofType: "png") ?? "") // 일단은 Asset에 있는 예시사진을 넣어두었고, 추후에 넘어온 이미지로 그 대상을 변경시켜줘야함.
     
-    
+
     
     @IBOutlet weak var preViewImage: UIImageView!
     

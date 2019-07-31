@@ -12,7 +12,9 @@ import Photos
 import AVFoundation
 import MobileCoreServices
 
-let document = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+let filemanager = FileManager()
+let document = try! filemanager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+//let document = "/Users/gw_12/Desktop/image"
 
 struct UrlAndImage
 {
@@ -22,44 +24,72 @@ struct UrlAndImage
 }
 
 
+
 var structure = UrlAndImage()
 
 class MainViewController: UIViewController{
-    
+
     let cellIdentifier: String = "cell"
-    
-    var arrImage : [String] = ["01.mov","02.mov","20.mov","21.mov","22.mov","23.mov","24.mov"]
-    
-    
-  
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        loadImages()
         saveImages()
+
         
     }
+    var pathData : [URL]!
     
-    
+    func loadImages(){
+        do {
+            // contentsOfDirectory(atPath:)가 해당 디렉토리 안의 파일 리스트를 배열로 반환
+            //let contents = try filemanager.contentsOfDirectory(atPath: "\(document)")
+            let contents = try filemanager.contentsOfDirectory(at: document, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions(rawValue: FileManager.DirectoryEnumerationOptions.RawValue(VOL_CAP_FMT_HIDDEN_FILES)))
+            pathData = contents
+            print(pathData.count)
+        } catch let error as NSError {
+            print("Error access directory: \(error)")
+        }
+    }
     
     func saveImages() {
         var number = 0
-        while FileManager.default.fileExists(){
-        for imgStr in arrImage{
-            //모든 app의 표준 폴더인 document 폴더를 가지고 온다는 뜻
-            //print(document)
-            let imgUrl: URL = document.appendingPathComponent(imgStr,isDirectory: true)
-            //모든 내용이 저장된 데이터베이스 폴더를 가리키는 경로를 구축합니다.(폴더 안에 해당파일 가르키기)
-            //print(imgUrl.path)
-            let thumbnail : UIImage = self.imgFromVideo(url: imgUrl, at: 8)!
-            
-            structure.urlImg.append(thumbnail)
-            structure.urlVideo.append(imgUrl)
-            structure.indexNumber.append(number)
-            
-            number = number + 1
+        var loadNumber = 0
+
+        for _ in 0...pathData.count - 1{
+            if pathData.count != 1 {
+                //모든 app의 표준 폴더인 document 폴더를 가지고 온다는 뜻
+                //print(document)
+
+ 
+                let imgUrl : URL = pathData[number]
+                
+                print("imgurl=\(imgUrl)")
+                
+                
+                //모든 내용이 저장된 데이터베이스 폴더를 가리키는 경로를 구축한다는 뜻.(폴더 안에 해당파일 가르키기)
+                //print(imgUrl.path)
+                let lastName : String = imgUrl.lastPathComponent
+                if lastName == ".DS_Store"{
+                    number = number + 1
+                    continue
+                }
+                let thumbnail : UIImage = self.imgFromVideo(url: imgUrl, at: 8)!
+                
+                structure.urlImg.append(thumbnail)
+                structure.urlVideo.append(imgUrl)
+                structure.indexNumber.append(loadNumber)
+                
+                number = number + 1
+                loadNumber = loadNumber + 1
+                
+            }
+            else  {
+                break
+            }
         }
-    }
         
     }
     
@@ -70,7 +100,7 @@ class MainViewController: UIViewController{
         assetImg.appliesPreferredTrackTransform = true
         assetImg.apertureMode = AVAssetImageGenerator.ApertureMode.encodedPixels
         
-        let cmTime = CMTime(seconds: time, preferredTimescale: 10)
+        let cmTime = CMTime(seconds: time, preferredTimescale: 60)
         let thumbnailImg: CGImage
         do {
             thumbnailImg = try assetImg.copyCGImage(at: cmTime, actualTime: nil)
@@ -97,11 +127,11 @@ class MainViewController: UIViewController{
         
         try? FileManager.default.removeItem(at: deleteUrl)
         
-        structure.urlImg.remove(at: indx)
-        structure.urlVideo.remove(at: indx)
-        structure.indexNumber.remove(at: indx)
+        structure.urlImg.removeAll()
+        structure.urlVideo.removeAll()
+        structure.indexNumber.removeAll()
         
-        collectionView.reloadData()
+ 
     }
     
     func loadRecordView(){
@@ -109,13 +139,7 @@ class MainViewController: UIViewController{
         let recordViewController = storyBoard.instantiateViewController(withIdentifier: "recordView") as! RecordViewController
         self.present(recordViewController, animated: true, completion: nil)
     }
-    
-    func loadPreview(){
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Preview", bundle: nil)
-        let previewController = storyBoard.instantiateViewController(withIdentifier: "preview") as! PreviewController
-        self.present(previewController, animated: true, completion: nil)
-    }
-    
+
     func loadPreview(cellImage:UIImage, cellVideo:URL, cellNumber:Int){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Preview", bundle: nil)
         let previewController = storyBoard.instantiateViewController(withIdentifier: "preview") as! PreviewController
@@ -123,11 +147,6 @@ class MainViewController: UIViewController{
         self.present(previewController, animated: true, completion: nil)
     }
     
-    
-    @IBAction func clickTestButton(_ sender: Any) {
-        loadPreview()
-    }
-    //
     
     @IBAction func clickAddBtn(_ sender: Any) {
         loadRecordView()
@@ -168,6 +187,7 @@ extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }//up down
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cellImage:UIImage = (collectionView.cellForItem(at: indexPath) as! ImageCollectionViewCellModel).imageEx.image!

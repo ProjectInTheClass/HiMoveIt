@@ -114,8 +114,8 @@
 				DDA2CA0922E1CE5000B62F88 /* storyboards */,
 				DDB2B1B922DDA4A600337D56 /* AppDelegate.swift */,
 				C603E0D022E885FB000571CF /* Assets.xcassets */,
-				C69AEC0722E9CB7E00956B2A /* Image.png */,
 				DDB2B1C222DDA4A700337D56 /* LaunchScreen.storyboard */,
+				C69AEC0722E9CB7E00956B2A /* Image.png */,
 				DDB2B1C522DDA4A700337D56 /* Info.plist */,
 			);
 			path = HiMoveIt;

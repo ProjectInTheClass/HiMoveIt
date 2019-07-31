@@ -50,7 +50,7 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
         editorViewController.setRecURL(fileURL: fileURL)
         self.present(editorViewController, animated: false, completion: nil)
     }
-
+    
     @IBAction func clickRecordBtn(_ sender: Any) {
         if recordStatus!.isRecordOn() { //정지처리
             recordStatus!.setRecordOn(status: false);
@@ -106,13 +106,13 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

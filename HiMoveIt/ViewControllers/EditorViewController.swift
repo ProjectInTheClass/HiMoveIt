@@ -89,6 +89,7 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate, UI
             player!.play()
         }
     }
+    
     override func viewDidAppear(_ animated: Bool) {        // view가 나타날때 player 재생
         super.viewDidAppear(animated)
         self.setParamVideo()
@@ -98,7 +99,7 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate, UI
     }
     
     
-
+    
     @IBAction func clickDoneBtn(_ sender: Any) {
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
@@ -110,14 +111,13 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate, UI
         player?.seek(to: seekTime)
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
-
