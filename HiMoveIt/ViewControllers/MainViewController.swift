@@ -42,6 +42,12 @@ class MainViewController: UIViewController{
     }
     var pathData : [URL]!
     
+    func remove(){
+        structure.indexNumber.removeAll()
+        structure.urlImg.removeAll()
+        structure.urlVideo.removeAll()
+    }
+    
     func loadImages(){
         do {
             // contentsOfDirectory(atPath:)가 해당 디렉토리 안의 파일 리스트를 배열로 반환
@@ -53,6 +59,7 @@ class MainViewController: UIViewController{
             print("Error access directory: \(error)")
         }
     }
+    
     
     func saveImages() {
         var number = 0
@@ -115,7 +122,6 @@ class MainViewController: UIViewController{
     
     @IBOutlet weak var addBtn: UIButton!
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -127,11 +133,11 @@ class MainViewController: UIViewController{
         
         try? FileManager.default.removeItem(at: deleteUrl)
         
-        structure.urlImg.removeAll()
-        structure.urlVideo.removeAll()
-        structure.indexNumber.removeAll()
+        structure.urlImg.remove(at: indx)
+        structure.urlVideo.remove(at: indx)
+        structure.indexNumber.remove(at: indx)
         
- 
+
     }
     
     func loadRecordView(){
@@ -147,11 +153,16 @@ class MainViewController: UIViewController{
         self.present(previewController, animated: true, completion: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
+    }
     
     @IBAction func clickAddBtn(_ sender: Any) {
         loadRecordView()
     }
     
+
+
     
 }
 
@@ -196,6 +207,7 @@ extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSourc
         
         self.loadPreview(cellImage: cellImage,cellVideo: cellVideo,cellNumber: cellNumber)
     }
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1

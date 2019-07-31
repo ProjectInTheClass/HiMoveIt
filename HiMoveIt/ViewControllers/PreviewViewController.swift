@@ -45,10 +45,11 @@ class PreviewController: UIViewController {
     }
     
     func loadMainView(){
+        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let mainViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! MainViewController
         mainViewController.removeImage(indx: index!)
-        self.present(mainViewController, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func btnShare(_ sender: Any) {
@@ -78,7 +79,6 @@ class PreviewController: UIViewController {
     
     @IBAction func btnDelete(_ sender: Any) {
         loadMainView()
-        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func btnCancel(_ sender: Any) {

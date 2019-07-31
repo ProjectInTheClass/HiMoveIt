@@ -61,7 +61,7 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
             recordStatus!.setRecordOn(status: true);
             squareBtn(recordBtn)
             recordCameraModel?.startRec()
-            
+
         }
     }
     
@@ -102,6 +102,7 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
     
     
     @IBAction func clickCancelBtn(_ sender: Any) {
+        
         self.dismiss(animated: true, completion: nil)
     }
     
