@@ -13,7 +13,7 @@
         <!--My Works-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="HiMoveIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main" id="BYZ-38-t0r" customClass="MainViewController" customModule="HiMoveIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,14 +34,6 @@
                                         <state key="normal" title="+"/>
                                         <connections>
                                             <action selector="clickAddBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NtZ-TD-9jc"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8s-fB-ii1">
-                                        <rect key="frame" x="172" y="25" width="93" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="preview로이동"/>
-                                        <connections>
-                                            <action selector="clickTestButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hT1-oc-wXG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -65,7 +57,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="naj-Ab-hQ8" customClass="HomeTopCollectionCell" customModule="HiMoveIt" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="naj-Ab-hQ8" customClass="ImageCollectionViewCellModel" customModule="HiMoveIt" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="135" height="138"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -74,6 +66,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sek-Yu-F2d">
                                                     <rect key="frame" x="0.0" y="0.0" width="135" height="138"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -84,8 +77,15 @@
                                             <constraint firstAttribute="trailing" secondItem="sek-Yu-F2d" secondAttribute="trailing" id="m0u-Dy-HwX"/>
                                             <constraint firstAttribute="bottom" secondItem="sek-Yu-F2d" secondAttribute="bottom" id="rod-sC-rCq"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="imageEx" destination="sek-Yu-F2d" id="12D-NM-cZg"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="2EP-oJ-s7t"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="nzm-Cv-StN"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -111,6 +111,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addBtn" destination="BgZ-wU-0d4" id="Gli-8v-i6G"/>
+                        <outlet property="collectionView" destination="fCs-FZ-LIk" id="IpE-hX-z9u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
