@@ -7,10 +7,12 @@
 //  Copyright © 2019 jwmsg. All rights reserved.
 //
 
-import UIKit
+
 import Photos
 import AVFoundation
 import MobileCoreServices
+
+
 
 let filemanager = FileManager()
 let document = try! filemanager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
@@ -31,21 +33,24 @@ class MainViewController: UIViewController{
 
     let cellIdentifier: String = "cell"
     @IBOutlet var collectionView: UICollectionView!
+    let picker = UIImagePickerController()
+    var videoURL: NSURL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         loadImages()
         saveImages()
-
+        picker.delegate = self
         
     }
     var pathData : [URL]!
-    
+
     func remove(){
         structure.indexNumber.removeAll()
         structure.urlImg.removeAll()
         structure.urlVideo.removeAll()
+        
     }
     
     func loadImages(){
@@ -64,16 +69,14 @@ class MainViewController: UIViewController{
     func saveImages() {
         var number = 0
         var loadNumber = 0
-
-        for _ in 0...pathData.count - 1{
+        
+        print(document)
+        
+        for _ in 0...pathData.count {
             if pathData.count != 1 {
                 //모든 app의 표준 폴더인 document 폴더를 가지고 온다는 뜻
-                //print(document)
 
- 
                 let imgUrl : URL = pathData[number]
-                
-                print("imgurl=\(imgUrl)")
                 
                 
                 //모든 내용이 저장된 데이터베이스 폴더를 가리키는 경로를 구축한다는 뜻.(폴더 안에 해당파일 가르키기)
@@ -158,13 +161,46 @@ class MainViewController: UIViewController{
     }
     
     @IBAction func clickAddBtn(_ sender: Any) {
+        let alert =  UIAlertController(title: "원하는 타이틀", message: "원하는 메세지", preferredStyle: .actionSheet)
+        
+        let library =  UIAlertAction(title: "사진앨범", style: .default) { (action) in self.openLibrary()
+        }
+        //빼도댐
+        /*
+         let camera =  UIAlertAction(title: "동영상 촬영", style: .default) { (action) in
+         self.openCamera()
+         }
+         */
+        let camera =  UIAlertAction(title: "카메라", style: .default) { (action) in
+            self.loadRecordView()
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alert.addAction(library)
+        alert.addAction(camera)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+        
+        
         loadRecordView()
     }
     
+    func openLibrary()
+    {
+        if (UIImagePickerController.isSourceTypeAvailable(.photoLibrary)) {
+            picker.delegate = self
+            picker.sourceType = .photoLibrary
+            picker.mediaTypes = [kUTTypeMovie as String]
+            picker.allowsEditing = false
+            present(picker, animated: true, completion: nil)
+        }
+    }
 
 
     
 }
+
 
 
 //collectionviewcell
@@ -216,3 +252,25 @@ extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSourc
 
 
 
+
+extension MainViewController : UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! NSString
+        
+        if mediaType.isEqual(to: kUTTypeMovie as NSString as String){
+            
+    
+        videoURL = (info[UIImagePickerController.InfoKey.mediaURL] as! NSURL)
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Record", bundle: nil)
+        let recordViewController = storyBoard.instantiateViewController(withIdentifier: "recordView") as! RecordViewController
+        recordViewController.loadEditorView(fileURL: videoURL)
+        }
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    
+}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82BC5BF89DE88F78E5069AAB /* Pods_HiMoveIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6477DDB4B09C87D3A8F806E8 /* Pods_HiMoveIt.framework */; };
 		C603E0D122E885FB000571CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C603E0D022E885FB000571CF /* Assets.xcassets */; };
 		C62703E022E5CD7700403C5E /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62703DF22E5CD7700403C5E /* PreviewViewController.swift */; };
 		C69AEC0822E9CB7E00956B2A /* Image.png in Resources */ = {isa = PBXBuildFile; fileRef = C69AEC0722E9CB7E00956B2A /* Image.png */; };
@@ -23,9 +24,13 @@
 		DDB2B1BC22DDA4A600337D56 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB2B1BB22DDA4A600337D56 /* MainViewController.swift */; };
 		DDB2B1BF22DDA4A600337D56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB2B1BD22DDA4A600337D56 /* Main.storyboard */; };
 		DDB2B1C422DDA4A700337D56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB2B1C222DDA4A700337D56 /* LaunchScreen.storyboard */; };
+		F42066AC22F4117600EB5A9E /* GalleryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42066AB22F4117600EB5A9E /* GalleryModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E3E7CF4AA031BF689E7C1A2 /* Pods-HiMoveIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiMoveIt.release.xcconfig"; path = "Target Support Files/Pods-HiMoveIt/Pods-HiMoveIt.release.xcconfig"; sourceTree = "<group>"; };
+		6477DDB4B09C87D3A8F806E8 /* Pods_HiMoveIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HiMoveIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A29ACB3D980D076CC836C567 /* Pods-HiMoveIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiMoveIt.debug.xcconfig"; path = "Target Support Files/Pods-HiMoveIt/Pods-HiMoveIt.debug.xcconfig"; sourceTree = "<group>"; };
 		C603E0D022E885FB000571CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C62703DF22E5CD7700403C5E /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		C69AEC0722E9CB7E00956B2A /* Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image.png; sourceTree = "<group>"; };
@@ -44,6 +49,7 @@
 		DDB2B1BE22DDA4A600337D56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DDB2B1C322DDA4A700337D56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDB2B1C522DDA4A700337D56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F42066AB22F4117600EB5A9E /* GalleryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82BC5BF89DE88F78E5069AAB /* Pods_HiMoveIt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +71,7 @@
 				DDA2CA4522E7286F00B62F88 /* RecordCameraModel.swift */,
 				DDA2CA4422E7286F00B62F88 /* RecordStatusModel.swift */,
 				DDA2CA4A22E8304E00B62F88 /* RecordFilterModel.swift */,
+				F42066AB22F4117600EB5A9E /* GalleryModel.swift */,
 			);
 			path = ExtendedModels;
 			sourceTree = "<group>";
@@ -95,6 +103,8 @@
 			children = (
 				DDB2B1B822DDA4A600337D56 /* HiMoveIt */,
 				DDB2B1B722DDA4A600337D56 /* Products */,
+				FFEE56BA212F0C880D28443F /* Pods */,
+				E6C5995414607321C8E8F703 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +131,23 @@
 			path = HiMoveIt;
 			sourceTree = "<group>";
 		};
+		E6C5995414607321C8E8F703 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6477DDB4B09C87D3A8F806E8 /* Pods_HiMoveIt.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFEE56BA212F0C880D28443F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A29ACB3D980D076CC836C567 /* Pods-HiMoveIt.debug.xcconfig */,
+				3E3E7CF4AA031BF689E7C1A2 /* Pods-HiMoveIt.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -128,6 +155,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDB2B1C822DDA4A700337D56 /* Build configuration list for PBXNativeTarget "HiMoveIt" */;
 			buildPhases = (
+				F582A3A340A5C4E06AA0C63A /* [CP] Check Pods Manifest.lock */,
 				DDB2B1B222DDA4A600337D56 /* Sources */,
 				DDB2B1B322DDA4A600337D56 /* Frameworks */,
 				DDB2B1B422DDA4A600337D56 /* Resources */,
@@ -191,6 +219,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		F582A3A340A5C4E06AA0C63A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HiMoveIt-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DDB2B1B222DDA4A600337D56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -200,6 +253,7 @@
 				DDB2B1BC22DDA4A600337D56 /* MainViewController.swift in Sources */,
 				DDA2CA4B22E8304E00B62F88 /* RecordFilterModel.swift in Sources */,
 				DDA2CA4722E7286F00B62F88 /* RecordStatusModel.swift in Sources */,
+				F42066AC22F4117600EB5A9E /* GalleryModel.swift in Sources */,
 				DDA2CA4922E7286F00B62F88 /* FloatAlertModel.swift in Sources */,
 				DDB2B1BA22DDA4A600337D56 /* AppDelegate.swift in Sources */,
 				C62703E022E5CD7700403C5E /* PreviewViewController.swift in Sources */,
@@ -348,6 +402,7 @@
 		};
 		DDB2B1C922DDA4A700337D56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A29ACB3D980D076CC836C567 /* Pods-HiMoveIt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -369,6 +424,7 @@
 		};
 		DDB2B1CA22DDA4A700337D56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E3E7CF4AA031BF689E7C1A2 /* Pods-HiMoveIt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

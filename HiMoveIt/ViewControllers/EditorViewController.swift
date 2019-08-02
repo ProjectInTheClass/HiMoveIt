@@ -33,7 +33,6 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate, UI
     
     func setRecURL(fileURL:NSURL){
         self.recFileURL = fileURL
-        
     }
     
     func goBack(){

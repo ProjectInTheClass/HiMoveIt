@@ -5,6 +5,7 @@ import AVFoundation
 import AVKit
 import Photos
 
+
 class PreviewController: UIViewController {
     
     //let text = "공유할 이미지(APNG)에 대한 이름" // 공유할 때 같이 들어가는 텍스트 [ 삭제 가능 ]
