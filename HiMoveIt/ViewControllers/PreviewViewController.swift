@@ -14,7 +14,7 @@ import Regift
 
 class PreviewController: UIViewController {
     
-    var shareImage = URL(fileURLWithPath: Bundle.main.path(forResource: "Image", ofType: "png") ?? "")
+    var shareImage = URL(fileURLWithPath: Bundle.main.path(forResource:"", ofType: "mov") ?? "")
     func convertGif(){
         let path: URL = imageUrl
         let frameCount = 16

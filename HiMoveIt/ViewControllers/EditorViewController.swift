@@ -97,20 +97,11 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate, UI
         self.setParamVideo()
     }
     @IBAction func clickCancelBtn(_ sender: Any) {
-
-        try? FileManager.default.removeItem(at: )
-        
         goBack()
     }
     
     
-    
     @IBAction func clickDoneBtn(_ sender: Any) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! MainViewController
-        mainViewController.remove()
-        mainViewController.loadImages()
-        mainViewController.saveImages()
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     

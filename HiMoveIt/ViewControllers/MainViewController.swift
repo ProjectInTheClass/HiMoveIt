@@ -27,22 +27,24 @@ struct UrlAndImage
 
 var structure = UrlAndImage()
 
+
 class MainViewController: UIViewController{
     
     let cellIdentifier: String = "cell"
     @IBOutlet var collectionView: UICollectionView!
-    let picker = UIImagePickerController()
+
     var videoURL: URL!
     
     var number = 0
     var loadNumber = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(document)
         loadImages()
         saveImages()
-        picker.delegate = self
+ 
         
     }
     var pathData : [URL]!
@@ -58,7 +60,6 @@ class MainViewController: UIViewController{
         do {
             let contents = try filemanager.contentsOfDirectory(at: document, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions(rawValue: FileManager.DirectoryEnumerationOptions.RawValue(VOL_CAP_FMT_HIDDEN_FILES)))
             pathData = contents
-            print(pathData.count)
         } catch let error as NSError {
             print("Error access directory: \(error)")
         }
@@ -83,6 +84,7 @@ class MainViewController: UIViewController{
                 structure.urlImg.append(thumbnail)
                 structure.urlVideo.append(imgUrl)
                 structure.indexNumber.append(loadNumber)
+                
                 
                 number = number + 1
                 loadNumber = loadNumber + 1
@@ -114,9 +116,6 @@ class MainViewController: UIViewController{
         return UIImage(cgImage: thumbnailImg)
     }
     
-    
-    @IBOutlet weak var addBtn: UIButton!
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -129,6 +128,7 @@ class MainViewController: UIViewController{
         
         try? FileManager.default.removeItem(at: deleteUrl)
         
+        
         structure.urlImg.removeAll()
         structure.urlVideo.removeAll()
         structure.indexNumber.removeAll()
@@ -140,12 +140,7 @@ class MainViewController: UIViewController{
         self.viewDidLoad()
     }
     
-    func loadRecordView(){
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Record", bundle: nil)
-        let recordViewController = storyBoard.instantiateViewController(withIdentifier: "recordView") as! RecordViewController
-        self.present(recordViewController, animated: true, completion: nil)
-    }
-    
+
     func loadPreview(cellImage:UIImage, cellVideo:URL, cellNumber:Int){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Preview", bundle: nil)
         let previewController = storyBoard.instantiateViewController(withIdentifier: "preview") as! PreviewController
@@ -156,39 +151,6 @@ class MainViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         collectionView.reloadData()
     }
-    
-    @IBAction func clickAddBtn(_ sender: Any) {
-        let alert =  UIAlertController(title: "원하는 타이틀", message: "원하는 메세지", preferredStyle: .actionSheet)
-        
-        let library =  UIAlertAction(title: "사진앨범", style: .default) { (action) in self.openLibrary()
-        }
-        
-        let camera =  UIAlertAction(title: "카메라", style: .default) { (action) in
-            self.loadRecordView()
-        }
-        
-        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        
-        alert.addAction(library)
-        alert.addAction(camera)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
-        
-        
-        self.loadRecordView()
-    }
-    
-    func openLibrary()
-    {
-        if (UIImagePickerController.isSourceTypeAvailable(.photoLibrary)) {
-            picker.delegate = self
-            picker.sourceType = .photoLibrary
-            picker.mediaTypes = [kUTTypeMovie as String]
-            picker.allowsEditing = false
-            present(picker, animated: true, completion: nil)
-        }
-    }
-    
     
     
 }
@@ -244,54 +206,3 @@ extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSourc
 
 
 
-
-extension MainViewController : UIImagePickerControllerDelegate,UINavigationControllerDelegate{
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! NSString
-        
-        if mediaType.isEqual(to: kUTTypeMovie as NSString as String){
-            
-            
-            videoURL = (info[UIImagePickerController.InfoKey.mediaURL] as! URL)
-            
-            /*
-             let thumbnail : UIImage = self.imgFromVideo(url: videoURL, at: 8)!
-             
-             structure.urlImg.append(thumbnail)
-             structure.urlVideo.append(videoURL)
-             structure.indexNumber.append(loadNumber)
-             
-             number = number + 1
-             loadNumber = loadNumber + 1
-             */
-            let lastData = videoURL.lastPathComponent
-            let newData = document.appendingPathComponent(lastData, isDirectory: true)
-            
-            
-            do {
-                try filemanager.copyItem(at: videoURL, to: newData)
-            } catch let error {
-                print("Failed copying directory, \(error)")
-            }
-            
-            structure.urlVideo.removeAll()
-            structure.indexNumber.removeAll()
-            structure.urlImg.removeAll()
-            
-            number = 0
-            loadNumber = 0
-            
-            self.viewDidLoad()
-            
-            
-        }
-        
-        
-        dismiss(animated: true, completion: nil)
-        
-    }
-    
-    
-}

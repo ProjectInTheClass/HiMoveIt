@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,8 +22,9 @@
 		DDA2CA4B22E8304E00B62F88 /* RecordFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2CA4A22E8304E00B62F88 /* RecordFilterModel.swift */; };
 		DDB2B1BA22DDA4A600337D56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB2B1B922DDA4A600337D56 /* AppDelegate.swift */; };
 		DDB2B1BC22DDA4A600337D56 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB2B1BB22DDA4A600337D56 /* MainViewController.swift */; };
-		DDB2B1BF22DDA4A600337D56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB2B1BD22DDA4A600337D56 /* Main.storyboard */; };
 		DDB2B1C422DDA4A700337D56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB2B1C222DDA4A700337D56 /* LaunchScreen.storyboard */; };
+		F434424822F96495004E61B4 /* MainViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434424722F96495004E61B4 /* MainViewController2.swift */; };
+		F434424922F965D7004E61B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F434424522F963E9004E61B4 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,9 +46,10 @@
 		DDB2B1B622DDA4A600337D56 /* HiMoveIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiMoveIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDB2B1B922DDA4A600337D56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDB2B1BB22DDA4A600337D56 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		DDB2B1BE22DDA4A600337D56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DDB2B1C322DDA4A700337D56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDB2B1C522DDA4A700337D56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F434424522F963E9004E61B4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F434424722F96495004E61B4 /* MainViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +86,7 @@
 		DDA2CA0922E1CE5000B62F88 /* storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				DDB2B1BD22DDA4A600337D56 /* Main.storyboard */,
+				F434424522F963E9004E61B4 /* Main.storyboard */,
 				DDA2CA0722E1CD3500B62F88 /* Preview.storyboard */,
 				DDA2CA0A22E1CF6500B62F88 /* Record.storyboard */,
 				DDA2CA0C22E1D48300B62F88 /* Editor.storyboard */,
@@ -99,6 +101,7 @@
 				DDA2CA0F22E1DF2300B62F88 /* RecordViewController.swift */,
 				DDA2CA1122E1E9BE00B62F88 /* EditorViewController.swift */,
 				C62703DF22E5CD7700403C5E /* PreviewViewController.swift */,
+				F434424722F96495004E61B4 /* MainViewController2.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -142,7 +145,6 @@
 				937B66FAABD27135E41BAD7D /* Pods-HiMoveIt.debug.xcconfig */,
 				314304280356849F8DB732A4 /* Pods-HiMoveIt.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -206,9 +208,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F434424922F965D7004E61B4 /* Main.storyboard in Resources */,
 				C69AEC0822E9CB7E00956B2A /* Image.png in Resources */,
 				DDB2B1C422DDA4A700337D56 /* LaunchScreen.storyboard in Resources */,
-				DDB2B1BF22DDA4A600337D56 /* Main.storyboard in Resources */,
 				DDA2CA0822E1CD3500B62F88 /* Preview.storyboard in Resources */,
 				DDA2CA0B22E1CF6500B62F88 /* Record.storyboard in Resources */,
 				DDA2CA0D22E1D48300B62F88 /* Editor.storyboard in Resources */,
@@ -273,6 +275,7 @@
 				DDB2B1BA22DDA4A600337D56 /* AppDelegate.swift in Sources */,
 				C62703E022E5CD7700403C5E /* PreviewViewController.swift in Sources */,
 				DDA2CA1222E1E9BE00B62F88 /* EditorViewController.swift in Sources */,
+				F434424822F96495004E61B4 /* MainViewController2.swift in Sources */,
 				DDA2CA4822E7286F00B62F88 /* RecordCameraModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,14 +283,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DDB2B1BD22DDA4A600337D56 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DDB2B1BE22DDA4A600337D56 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DDB2B1C222DDA4A700337D56 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

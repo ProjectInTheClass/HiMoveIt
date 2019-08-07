@@ -34,21 +34,21 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIA-XX-8nC">
                                                 <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                <state key="normal" title="Share" backgroundImage="icon_share"/>
+                                                <state key="normal" backgroundImage="icon_share"/>
                                                 <connections>
                                                     <action selector="btnShare:" destination="mR4-Sh-rFf" eventType="touchUpInside" id="eDU-iF-a0x"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lD-B4-spZ">
                                                 <rect key="frame" x="134" y="0.0" width="48" height="48"/>
-                                                <state key="normal" title="Play" backgroundImage="icon_play"/>
+                                                <state key="normal" backgroundImage="icon_play"/>
                                                 <connections>
                                                     <action selector="btnPlay:" destination="mR4-Sh-rFf" eventType="touchUpInside" id="oGk-Jq-huz"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jU-eM-zv1">
                                                 <rect key="frame" x="268" y="0.0" width="48" height="48"/>
-                                                <state key="normal" title="Delete" backgroundImage="icon_delete"/>
+                                                <state key="normal" backgroundImage="icon_delete"/>
                                                 <connections>
                                                     <action selector="btnDelete:" destination="mR4-Sh-rFf" eventType="touchUpInside" id="EJO-cy-jnr"/>
                                                 </connections>
@@ -121,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gLM-KF-kZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-30.434782608695656" y="93.750000000000014"/>
+            <point key="canvasLocation" x="-459" y="75"/>
         </scene>
     </scenes>
     <resources>
