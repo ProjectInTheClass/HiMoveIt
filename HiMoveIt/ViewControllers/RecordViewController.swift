@@ -46,7 +46,7 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
     func loadEditorView(fileURL:NSURL){
         setSwipeTransition()
         let storyBoard: UIStoryboard = UIStoryboard(name: "Editor", bundle: nil)
-        let editorViewController = storyBoard.instantiateViewController(withIdentifier: "editorView") as! EditorViewController
+        let editorViewController = storyBoard.instantiateViewController(withIdentifier: "selectorView") as! SelectorViewController
         editorViewController.setRecURL(fileURL: fileURL)
         self.present(editorViewController, animated: false, completion: nil)
     }

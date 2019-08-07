@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Editor View Controller-->
+        <!--Selector View Controller-->
         <scene sceneID="Rr2-R2-P6g">
             <objects>
-                <viewController storyboardIdentifier="editorView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ku9-NP-qRW" customClass="EditorViewController" customModule="HiMoveIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="selectorView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ku9-NP-qRW" customClass="SelectorViewController" customModule="HiMoveIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yii-GX-Ysj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,6 +95,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MRF-Qr-6Oc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="43" y="-21"/>
+        </scene>
+        <!--Mask View Controller-->
+        <scene sceneID="mRQ-eq-xnj">
+            <objects>
+                <viewController storyboardIdentifier="maskView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="miL-nP-qIB" customClass="MaskViewController" customModule="HiMoveIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rOQ-bu-I1d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDo-jZ-Wwv">
+                                <rect key="frame" x="0.0" y="20" width="414" height="116"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUW-oW-GBK">
+                                        <rect key="frame" x="16" y="21" width="37" height="38"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="취소"/>
+                                        <connections>
+                                            <action selector="clickCancelBtn:" destination="Ku9-NP-qRW" eventType="touchUpInside" id="hNZ-f4-0qf"/>
+                                            <action selector="clickCancelBtn:" destination="miL-nP-qIB" eventType="touchUpInside" id="uia-wb-gHH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGQ-E4-0wx">
+                                        <rect key="frame" x="360" y="25" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="testbtn:" destination="miL-nP-qIB" eventType="touchUpInside" id="B5p-Ve-y7d"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ZUW-oW-GBK" firstAttribute="leading" secondItem="kDo-jZ-Wwv" secondAttribute="leading" constant="16" id="Frf-zG-a3O"/>
+                                    <constraint firstItem="ZUW-oW-GBK" firstAttribute="centerY" secondItem="kDo-jZ-Wwv" secondAttribute="centerY" constant="-18" id="Pi1-Je-NXr"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKQ-Fd-Keq">
+                                <rect key="frame" x="0.0" y="655" width="414" height="81"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="81" id="kZp-mj-Ohk"/>
+                                </constraints>
+                            </view>
+                            <view clipsSubviews="YES" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dcn-gt-fcM" userLabel="Mask Layer">
+                                <rect key="frame" x="0.0" y="91" width="414" height="555"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" label="Mask Layer"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZKQ-Fd-Keq" firstAttribute="bottom" secondItem="2FI-cu-GOJ" secondAttribute="bottom" id="4Pd-sQ-UCW"/>
+                            <constraint firstItem="ZKQ-Fd-Keq" firstAttribute="leading" secondItem="kDo-jZ-Wwv" secondAttribute="leading" id="6Yw-TS-suE"/>
+                            <constraint firstItem="2FI-cu-GOJ" firstAttribute="bottom" secondItem="kDo-jZ-Wwv" secondAttribute="bottom" constant="600" id="GMP-Ac-oD0"/>
+                            <constraint firstItem="kDo-jZ-Wwv" firstAttribute="trailing" secondItem="2FI-cu-GOJ" secondAttribute="trailing" id="QJD-hg-QTT"/>
+                            <constraint firstItem="ZKQ-Fd-Keq" firstAttribute="trailing" secondItem="kDo-jZ-Wwv" secondAttribute="trailing" id="TMC-OX-JRG"/>
+                            <constraint firstItem="kDo-jZ-Wwv" firstAttribute="leading" secondItem="2FI-cu-GOJ" secondAttribute="leading" id="lg6-uU-EFw"/>
+                            <constraint firstItem="kDo-jZ-Wwv" firstAttribute="top" secondItem="2FI-cu-GOJ" secondAttribute="top" id="oBg-JR-kyy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2FI-cu-GOJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="maskLayer" destination="Dcn-gt-fcM" id="dzz-Av-nWL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tHt-6b-0MA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="838" y="-21"/>
         </scene>
     </scenes>
 </document>
