@@ -2,123 +2,117 @@
 //  EditorViewController.swift
 //  HiMoveIt
 //
-//  Created by Jaewan Jeong on 19/07/2019.
+//  Created by GW_09 on 07/08/2019.
 //  Copyright © 2019 jwmsg. All rights reserved.
 //
 
 import UIKit
-import MobileCoreServices
-import AVFoundation
 import AVKit
 
-class EditorViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
-    
-    @IBOutlet weak var cancelBtn: UIButton!
-    @IBOutlet weak var playGround: UIView!
-    @IBOutlet weak var getTimeBar: UISlider!
-    
-    var recFileURL:NSURL?
+class EditorViewController: UIViewController {
+    var asset:AVAsset?
+    var maskedImage:CGImage?
+    var player:AVPlayer?
     var playerLayer:AVPlayerLayer?
     var playerItem:AVPlayerItem?
-    var playAsset:AVAsset?
-    var player:AVPlayer?
-    var playOnReady:Bool = false;
-    private var playerItemContext = 0
+    @IBOutlet weak var playGround: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
     }
-    
-    func setRecURL(fileURL:NSURL){
-        self.recFileURL = fileURL
+    func prepareForLayer(){
+        let image = UIImage(cgImage: maskedImage!)
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
+        imageView.frame = playGround.bounds
+        playGround.addSubview(imageView)
+
+    }
+    func prepareForPlay(){
+        guard self.asset != nil else{
+            print("asset is nil")
+            return
+        }
+        playerItem = AVPlayerItem(asset: self.asset!)
+        self.player = AVPlayer(playerItem: playerItem)
+        playerLayer = AVPlayerLayer(player: player)
+        playerLayer!.videoGravity = .resizeAspectFill
+        playerLayer?.frame = playGround.bounds
+        playGround.layer.addSublayer(playerLayer!)
         
     }
     
-    func goBack(){
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromLeft
-        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-        view.window!.layer.add(transition, forKey: kCATransition)
-        self.dismiss(animated: false, completion: nil)
+    func editPlay(){
+        guard player != nil else{
+            return
+        }
+        self.player!.seek(to: CMTime(seconds: 0, preferredTimescale: 600))
+        player?.play()
     }
-    func setParamVideo(){
-        playAsset = AVAsset(url: recFileURL! as URL)
-        
-        playAsset?.loadValuesAsynchronously(forKeys:["playable"] , completionHandler: {
-            var err:NSError? = nil
-            let status = self.playAsset!.statusOfValue(forKey: "playable", error: &err)
-            
-            switch status {
-            case .loaded:
-                self.procNextPreparing()
-                break
-            case .failed:
-                print("error:",err as Any)
-                break
-            default:
-                print("error:",err as Any)
-                break
-            }
+
+    func initSet(asset:AVAsset, maskedImage:CGImage){
+        self.asset = asset
+        self.maskedImage = maskedImage
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.prepareForPlay()
+        self.prepareForLayer()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.player?.pause()
+    }
+    
+    @IBAction func cllickPlayBtn(_ sender: Any) {
+        editPlay()
+    }
+    
+    @IBAction func clickCencelBtn(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func pageClose(){
+        self.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {
+            self.dismiss(animated: true, completion: nil)
+        })
+        self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {
+            self.dismiss(animated: true, completion: nil)
         })
         
-        //로드하는 시간동안 본 함수가 살아있지 않고 죽어버리면 뒤져버림;;;;;;
-    }
-    func procNextPreparing() {
-        self.playerItem = AVPlayerItem(asset: self.playAsset!)
-        self.player = AVPlayer(playerItem:self.playerItem)
-        self.playerLayer = AVPlayerLayer(player: self.player)
-        self.playerLayer!.videoGravity = .resizeAspectFill
-        self.playOnReady = true;
-        
-        self.videoPlay();
-    }
-    func setSliderValue(data:Double){
-        print("current time : ", data)
-        let timerate = (data / (playAsset?.duration.seconds)!) * 100
-        self.getTimeBar.setValue(Float(timerate), animated: true)
-    }
-    func videoPlay(){
-        if(playOnReady){
-            self.playerLayer!.frame = self.playGround.bounds
-            self.playGround.layer.addSublayer(self.playerLayer!)
-            let interval = CMTime(seconds: 0.005, preferredTimescale: CMTimeScale(NSEC_PER_MSEC))
-            let mainQueue = DispatchQueue.main
-            self.player?.addPeriodicTimeObserver(forInterval: interval, queue: mainQueue, using: { self.setSliderValue(data: $0.seconds)})
-            player!.play()
-        }
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {
+            self.dismiss(animated: true, completion: nil)
+        })
+        self.presentingViewController?.dismiss(animated: true, completion: {
+            self.dismiss(animated: true, completion: nil)
+        })
+        self.dismiss(animated: true, completion: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {        // view가 나타날때 player 재생
-        super.viewDidAppear(animated)
-        self.setParamVideo()
-    }
-    @IBAction func clickCancelBtn(_ sender: Any) {
-        goBack()
-    }
-    
-    
-
     @IBAction func clickDoneBtn(_ sender: Any) {
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        guard asset != nil , maskedImage != nil else {
+            return
+        }
+        let renderer = RenderModel(asset: asset!, maskedImage: maskedImage!)
+        _ = renderer.render()
+        FloatAlertModel(rootView: self).createAlert(title: "생성완료", message: "성공적으로 생성되었습니다.",funcd:pageClose)
     }
     
-    @IBAction func chantedSlider(_ sender: Any) {
-        let sliderValue:Float = self.getTimeBar.value
-        let realTime = Double( sliderValue/100 ) * ((playAsset?.duration.seconds)!)
-        let seekTime = CMTime(seconds: realTime, preferredTimescale:(playAsset?.duration.timescale)!)
-        player?.seek(to: seekTime)
-    }
+    
+    
+
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
-

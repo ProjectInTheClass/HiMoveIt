@@ -21,9 +21,7 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.recordCameraModel = RecordCameraModel(cameraLayer: cameraLayer, rootView: self)
-        self.recordStatus = RecordStatusModel()
-        self.roundBtn(recordBtn);
+        
         
     }
     func roundBtn(_ object:AnyObject){
@@ -43,30 +41,56 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
         transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
         view.window!.layer.add(transition, forKey: kCATransition)
     }
-    func loadEditorView(fileURL:NSURL){
-        setSwipeTransition()
+    func loadEditorView(asset:AVAsset){
+        //setSwipeTransition()
         let storyBoard: UIStoryboard = UIStoryboard(name: "Editor", bundle: nil)
-        let editorViewController = storyBoard.instantiateViewController(withIdentifier: "editorView") as! EditorViewController
-        editorViewController.setRecURL(fileURL: fileURL)
-        self.present(editorViewController, animated: false, completion: nil)
+        let selectorViewController = storyBoard.instantiateViewController(withIdentifier: "selectorView") as! SelectorViewController
+        selectorViewController.setAsset(asset: asset)
+        self.present(selectorViewController, animated: true, completion: nil)
     }
-
+    func startNextFunc(fileURL:NSURL){
+        
+        let playAsset = AVAsset(url: fileURL as URL)
+        
+        playAsset.loadValuesAsynchronously(forKeys:["playable"] , completionHandler: {
+            var err:NSError? = nil
+            let status = playAsset.statusOfValue(forKey: "playable", error: &err)
+            
+            switch status {
+            case .loaded:
+                self.loadEditorView(asset: playAsset)
+                break
+            case .failed:
+                print("error:",err as Any)
+                break
+            default:
+                print("error:",err as Any)
+                break
+            }
+        })
+     }
+    
     @IBAction func clickRecordBtn(_ sender: Any) {
         if recordStatus!.isRecordOn() { //정지처리
             recordStatus!.setRecordOn(status: false);
             roundBtn(recordBtn)
             let fileURL:NSURL = (recordCameraModel?.stopRec())!
-            loadEditorView(fileURL:fileURL)
+            startNextFunc(fileURL: fileURL)
         }else{ //녹화처리
             recordStatus!.setRecordOn(status: true);
             squareBtn(recordBtn)
             recordCameraModel?.startRec()
-            
+
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {        // view가 나타날때 player 재생
+    override func viewWillAppear(_ animated: Bool) {        // view가 나타날때 player 재생
         super.viewDidAppear(animated)
+        
+        self.recordCameraModel = RecordCameraModel(cameraLayer: cameraLayer, rootView: self)
+        self.recordStatus = RecordStatusModel()
+        self.roundBtn(recordBtn);
+        
         UIView.transition(with: self.cameraLayer, duration: 0.5, options: .transitionFlipFromLeft, animations: {
             self.cameraLayer.isHidden = false
             self.recordCameraModel?.setCamera()
@@ -102,17 +126,18 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
     
     
     @IBAction func clickCancelBtn(_ sender: Any) {
+        
         self.dismiss(animated: true, completion: nil)
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

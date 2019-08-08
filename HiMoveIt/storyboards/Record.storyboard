@@ -69,7 +69,10 @@
                                             </button>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="u23-H0-6I4" firstAttribute="centerY" secondItem="uJ6-20-XPl" secondAttribute="centerY" id="SKD-oP-hR0"/>
                                             <constraint firstItem="hmm-yG-ZHj" firstAttribute="width" secondItem="BVj-WV-tOe" secondAttribute="width" id="aRI-2q-kfh"/>
+                                            <constraint firstItem="hmm-yG-ZHj" firstAttribute="centerY" secondItem="uJ6-20-XPl" secondAttribute="centerY" id="awl-nv-mbh"/>
+                                            <constraint firstItem="BVj-WV-tOe" firstAttribute="centerY" secondItem="uJ6-20-XPl" secondAttribute="centerY" id="duP-Cs-JI7"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
