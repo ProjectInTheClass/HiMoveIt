@@ -11,6 +11,8 @@ import UIKit
 class MaskViewController: UIViewController {
     var selectedImage:UIImage?
     var maskCanvas:MaskCanvasModel?
+    var currentImageView:UIImageView?
+    var imageRECT:CGRect?
     @IBOutlet weak var maskLayer: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,54 +22,72 @@ class MaskViewController: UIViewController {
     func setSelectedIamge(image:UIImage){
         self.selectedImage = image
     }
-    func imageOver(){
-        let imageView = UIImageView(image:selectedImage!)
-        imageView.frame = maskLayer.bounds
+    func imageOver(image:UIImage){
+        let imageView = UIImageView(image:image)
         imageView.contentMode = .scaleAspectFill
-        maskLayer.contentMode = .scaleAspectFill
+        imageRECT = imageView.frame
+        imageView.frame = maskLayer.bounds
         maskLayer.clipsToBounds = true;
         maskLayer.addSubview(imageView)
+        currentImageView = imageView
     }
     func maskOver(){
         maskCanvas = MaskCanvasModel()
         maskCanvas!.frame = maskLayer.bounds
-        maskCanvas!.backgroundColor = UIColor(white: 1, alpha: 0.2)
+        let xBound = maskLayer.bounds.width
+        let yBound = maskLayer.bounds.width * ((selectedImage?.size.height)! / (selectedImage?.size.width)!)
+        maskCanvas!.bounds = CGRect(x: 0, y: 0, width: xBound, height: yBound)
+        maskCanvas!.contentMode = .scaleAspectFill
+        maskCanvas!.backgroundColor = UIColor(white: 1, alpha: 0.3)
         maskLayer.addSubview(maskCanvas!)
     }
-    func masktest(){
+    func myimage() -> CGImage?{
         
-        let myimage = #imageLiteral(resourceName: "a")
+        //let myimage = #imageLiteral(resourceName: "a").cgImage
+        
+        var myimage = self.selectedImage?.cgImage
         
         guard maskCanvas?.rootContext != nil else{
             print("maskCanvas rootContext is null")
-            return
+            return nil
         }
         
-        let maskImage = maskCanvas?.rootContext?.makeImage()
+        guard let maskImage = maskCanvas?.toImage().cgImage else{
+            return nil
+        }
         
-        let newImage = myimage.cgImage?.masking(maskImage!)
-        
-
-        let newUIImage = UIImage(cgImage: newImage!)
-        let imageView = UIImageView(image:newUIImage)
-        imageView.frame = maskLayer.bounds
-        imageView.contentMode = .scaleAspectFill
-        maskLayer.contentMode = .scaleAspectFill
-        maskLayer.clipsToBounds = true;
-        maskLayer.addSubview(imageView)
-        
-        
-        
-        
-        
-        
-        
+        guard let myMask = CGImage(
+            maskWidth: maskImage.width,
+            height: maskImage.height,
+            bitsPerComponent: maskImage.bitsPerComponent,
+            bitsPerPixel: maskImage.bitsPerPixel,
+            bytesPerRow: maskImage.bytesPerRow,
+            provider: maskImage.dataProvider!, decode: nil, shouldInterpolate: false
+            ) else{
+                return nil
+        }
+        guard let newImage = myimage!.masking(myMask) else{
+            return nil
+        }
+        maskLayer.subviews.forEach { (myUI) in
+            myUI.removeFromSuperview()
+        }
+        imageOver(image: UIImage(cgImage: newImage))
+        return newImage
+    }
+    
+    func resetLayers(){
+        maskLayer.subviews.forEach { (myUI) in
+            myUI.removeFromSuperview()
+        }
+        imageOver(image: self.selectedImage!)
+        maskOver()
     }
     @IBAction func testbtn(_ sender: Any) {
-        masktest()
+        myimage()
     }
     override func viewDidAppear(_ animated: Bool) {
-        imageOver()
+        imageOver(image: self.selectedImage!)
         maskOver()
     }
     

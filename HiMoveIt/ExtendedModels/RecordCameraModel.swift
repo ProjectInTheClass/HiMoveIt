@@ -45,7 +45,7 @@ class RecordCameraModel{
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
             videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
             videoPreviewLayer?.frame = cameraLayer!.layer.bounds
-            cameraLayer!.layer.addSublayer(videoPreviewLayer!)
+            cameraLayer!.layer.insertSublayer(videoPreviewLayer!,at:0)
             
             
             session?.startRunning()
