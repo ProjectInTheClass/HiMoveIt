@@ -21,9 +21,7 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.recordCameraModel = RecordCameraModel(cameraLayer: cameraLayer, rootView: self)
-        self.recordStatus = RecordStatusModel()
-        self.roundBtn(recordBtn);
+        
         
     }
     func roundBtn(_ object:AnyObject){
@@ -50,7 +48,6 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
         selectorViewController.setAsset(asset: asset)
         self.present(selectorViewController, animated: true, completion: nil)
     }
-
     func startNextFunc(fileURL:NSURL){
         
         let playAsset = AVAsset(url: fileURL as URL)
@@ -83,12 +80,17 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
             recordStatus!.setRecordOn(status: true);
             squareBtn(recordBtn)
             recordCameraModel?.startRec()
-            
+
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {        // view가 나타날때 player 재생
+    override func viewWillAppear(_ animated: Bool) {        // view가 나타날때 player 재생
         super.viewDidAppear(animated)
+        
+        self.recordCameraModel = RecordCameraModel(cameraLayer: cameraLayer, rootView: self)
+        self.recordStatus = RecordStatusModel()
+        self.roundBtn(recordBtn);
+        
         UIView.transition(with: self.cameraLayer, duration: 0.5, options: .transitionFlipFromLeft, animations: {
             self.cameraLayer.isHidden = false
             self.recordCameraModel?.setCamera()
@@ -124,17 +126,18 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
     
     
     @IBAction func clickCancelBtn(_ sender: Any) {
+        
         self.dismiss(animated: true, completion: nil)
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

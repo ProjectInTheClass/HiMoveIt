@@ -58,7 +58,7 @@ class RecordCameraModel{
     
     
     func startRec(){
-        let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first as String?
+        let documentPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first as String?
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat="yyyyMMddHHmmss"
@@ -155,8 +155,6 @@ class RecordCameraModel{
         
         self.movieOutput?.stopRecording()
         self.dismissCaptureSession()
-        setCamera()
-        
         
     }
     
@@ -166,5 +164,7 @@ class RecordCameraModel{
         self.rootView = rootView
         self.firstSetCam()
     }
+    
+    
     
 }

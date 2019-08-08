@@ -81,6 +81,12 @@ class SelectorViewController: UIViewController, UINavigationControllerDelegate, 
         super.viewDidAppear(animated)
         self.procNextPreparing()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        player?.pause()
+    }
+    
     @IBAction func clickCancelBtn(_ sender: Any) {
         goBack()
     }
@@ -93,6 +99,8 @@ class SelectorViewController: UIViewController, UINavigationControllerDelegate, 
         let sliderValue:Float = self.getTimeBar.value
         let realTime = Double( sliderValue/100 ) * ((playAsset?.duration.seconds)!)
         let seekTime = [NSValue(time: CMTime(seconds: realTime, preferredTimescale:(playAsset?.duration.timescale)!))]
+        imageGenerator.requestedTimeToleranceBefore = CMTime.zero
+        imageGenerator.requestedTimeToleranceAfter = CMTime.zero
         imageGenerator.appliesPreferredTrackTransform = true
         imageGenerator.generateCGImagesAsynchronously(forTimes: seekTime) { _, image, _, _, _ in
             if image != nil {
@@ -106,7 +114,7 @@ class SelectorViewController: UIViewController, UINavigationControllerDelegate, 
         let sliderValue:Float = self.getTimeBar.value
         let realTime = Double( sliderValue/100 ) * ((playAsset?.duration.seconds)!)
         let seekTime = CMTime(seconds: realTime, preferredTimescale:(playAsset?.duration.timescale)!)
-        player?.seek(to: seekTime)
+        self.player?.seek(to: seekTime, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
         player?.pause()
     }
     /*

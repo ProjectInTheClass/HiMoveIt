@@ -10,6 +10,7 @@
 		540F12DD22FAAEB80016E7EA /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F12DC22FAAEB80016E7EA /* EditorViewController.swift */; };
 		540F12DF22FAAEE40016E7EA /* MaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F12DE22FAAEE40016E7EA /* MaskViewController.swift */; };
 		540F12E122FABB930016E7EA /* MaskCanvasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F12E022FABB930016E7EA /* MaskCanvasModel.swift */; };
+		82BC5BF89DE88F78E5069AAB /* Pods_HiMoveIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6477DDB4B09C87D3A8F806E8 /* Pods_HiMoveIt.framework */; };
 		93E2A0E535F3A47968A355B9 /* Pods_HiMoveIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6DE6FB166F86CC6667DD3AE /* Pods_HiMoveIt.framework */; };
 		C603E0D122E885FB000571CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C603E0D022E885FB000571CF /* Assets.xcassets */; };
 		C62703E022E5CD7700403C5E /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62703DF22E5CD7700403C5E /* PreviewViewController.swift */; };
@@ -26,12 +27,17 @@
 		DDB2B1BC22DDA4A600337D56 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB2B1BB22DDA4A600337D56 /* MainViewController.swift */; };
 		DDB2B1BF22DDA4A600337D56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB2B1BD22DDA4A600337D56 /* Main.storyboard */; };
 		DDB2B1C422DDA4A700337D56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB2B1C222DDA4A700337D56 /* LaunchScreen.storyboard */; };
+		DDBDECFB22FC9A3F003B1955 /* RenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBDECFA22FC9A3F003B1955 /* RenderModel.swift */; };
+		F42066AC22F4117600EB5A9E /* GalleryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42066AB22F4117600EB5A9E /* GalleryModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E3E7CF4AA031BF689E7C1A2 /* Pods-HiMoveIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiMoveIt.release.xcconfig"; path = "Target Support Files/Pods-HiMoveIt/Pods-HiMoveIt.release.xcconfig"; sourceTree = "<group>"; };
 		540F12DC22FAAEB80016E7EA /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		540F12DE22FAAEE40016E7EA /* MaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskViewController.swift; sourceTree = "<group>"; };
 		540F12E022FABB930016E7EA /* MaskCanvasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskCanvasModel.swift; sourceTree = "<group>"; };
+		6477DDB4B09C87D3A8F806E8 /* Pods_HiMoveIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HiMoveIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A29ACB3D980D076CC836C567 /* Pods-HiMoveIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiMoveIt.debug.xcconfig"; path = "Target Support Files/Pods-HiMoveIt/Pods-HiMoveIt.debug.xcconfig"; sourceTree = "<group>"; };
 		AD6CD127F6C3D5D1F1DA1131 /* Pods-HiMoveIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiMoveIt.debug.xcconfig"; path = "Target Support Files/Pods-HiMoveIt/Pods-HiMoveIt.debug.xcconfig"; sourceTree = "<group>"; };
 		C603E0D022E885FB000571CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C62703DF22E5CD7700403C5E /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +56,9 @@
 		DDB2B1BE22DDA4A600337D56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DDB2B1C322DDA4A700337D56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDB2B1C522DDA4A700337D56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDBDECFA22FC9A3F003B1955 /* RenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderModel.swift; sourceTree = "<group>"; };
 		EAE8C7709B88C8F4C22DF21B /* Pods-HiMoveIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiMoveIt.release.xcconfig"; path = "Target Support Files/Pods-HiMoveIt/Pods-HiMoveIt.release.xcconfig"; sourceTree = "<group>"; };
+		F42066AB22F4117600EB5A9E /* GalleryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryModel.swift; sourceTree = "<group>"; };
 		F6DE6FB166F86CC6667DD3AE /* Pods_HiMoveIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HiMoveIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -60,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93E2A0E535F3A47968A355B9 /* Pods_HiMoveIt.framework in Frameworks */,
+				82BC5BF89DE88F78E5069AAB /* Pods_HiMoveIt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +100,8 @@
 				DDA2CA4422E7286F00B62F88 /* RecordStatusModel.swift */,
 				DDA2CA4A22E8304E00B62F88 /* RecordFilterModel.swift */,
 				540F12E022FABB930016E7EA /* MaskCanvasModel.swift */,
+				F42066AB22F4117600EB5A9E /* GalleryModel.swift */,
+				DDBDECFA22FC9A3F003B1955 /* RenderModel.swift */,
 			);
 			path = ExtendedModels;
 			sourceTree = "<group>";
@@ -126,6 +137,8 @@
 				DDB2B1B722DDA4A600337D56 /* Products */,
 				5A8EF7366BCF27210B16D399 /* Pods */,
 				AFCA05DE910C922D38994355 /* Frameworks */,
+				FFEE56BA212F0C880D28443F /* Pods */,
+				E6C5995414607321C8E8F703 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,6 +162,23 @@
 				DDB2B1C522DDA4A700337D56 /* Info.plist */,
 			);
 			path = HiMoveIt;
+			sourceTree = "<group>";
+		};
+		E6C5995414607321C8E8F703 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6477DDB4B09C87D3A8F806E8 /* Pods_HiMoveIt.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFEE56BA212F0C880D28443F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A29ACB3D980D076CC836C567 /* Pods-HiMoveIt.debug.xcconfig */,
+				3E3E7CF4AA031BF689E7C1A2 /* Pods-HiMoveIt.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,8 +304,10 @@
 				540F12DF22FAAEE40016E7EA /* MaskViewController.swift in Sources */,
 				DDB2B1BC22DDA4A600337D56 /* MainViewController.swift in Sources */,
 				DDA2CA4B22E8304E00B62F88 /* RecordFilterModel.swift in Sources */,
+				DDBDECFB22FC9A3F003B1955 /* RenderModel.swift in Sources */,
 				540F12DD22FAAEB80016E7EA /* EditorViewController.swift in Sources */,
 				DDA2CA4722E7286F00B62F88 /* RecordStatusModel.swift in Sources */,
+				F42066AC22F4117600EB5A9E /* GalleryModel.swift in Sources */,
 				DDA2CA4922E7286F00B62F88 /* FloatAlertModel.swift in Sources */,
 				DDB2B1BA22DDA4A600337D56 /* AppDelegate.swift in Sources */,
 				C62703E022E5CD7700403C5E /* PreviewViewController.swift in Sources */,
@@ -446,7 +478,7 @@
 		};
 		DDB2B1CA22DDA4A700337D56 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EAE8C7709B88C8F4C22DF21B /* Pods-HiMoveIt.release.xcconfig */;
+			baseConfigurationReference = 3E3E7CF4AA031BF689E7C1A2 /* Pods-HiMoveIt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

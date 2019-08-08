@@ -28,6 +28,7 @@ class EditorViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         imageView.frame = playGround.bounds
         playGround.addSubview(imageView)
+
     }
     func prepareForPlay(){
         guard self.asset != nil else{
@@ -51,34 +52,67 @@ class EditorViewController: UIViewController {
         player?.play()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        prepareForPlay()
-        prepareForLayer()
-    }
-    
     func initSet(asset:AVAsset, maskedImage:CGImage){
         self.asset = asset
         self.maskedImage = maskedImage
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.prepareForPlay()
+        self.prepareForLayer()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.player?.pause()
     }
     
     @IBAction func cllickPlayBtn(_ sender: Any) {
         editPlay()
     }
     
+    @IBAction func clickCencelBtn(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
+    func pageClose(){
+        self.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {
+            self.dismiss(animated: true, completion: nil)
+        })
+        self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {
+            self.dismiss(animated: true, completion: nil)
+        })
+        
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {
+            self.dismiss(animated: true, completion: nil)
+        })
+        self.presentingViewController?.dismiss(animated: true, completion: {
+            self.dismiss(animated: true, completion: nil)
+        })
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func clickDoneBtn(_ sender: Any) {
+        guard asset != nil , maskedImage != nil else {
+            return
+        }
+        let renderer = RenderModel(asset: asset!, maskedImage: maskedImage!)
+        _ = renderer.render()
+        FloatAlertModel(rootView: self).createAlert(title: "생성완료", message: "성공적으로 생성되었습니다.",funcd:pageClose)
+    }
     
     
     
 
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

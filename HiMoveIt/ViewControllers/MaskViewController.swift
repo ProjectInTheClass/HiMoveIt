@@ -16,7 +16,6 @@ class MaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.resetLayers()
         // Do any additional setup after loading the view.
     }
     
@@ -89,6 +88,10 @@ class MaskViewController: UIViewController {
         let editorViewController = storyBoard.instantiateViewController(withIdentifier: "editView") as! EditorViewController
         editorViewController.initSet(asset: asset!, maskedImage: image)
         self.present(editorViewController, animated: true, completion: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.resetLayers()
     }
     
     @IBAction func clickDoneBtn(_ sender: Any) {

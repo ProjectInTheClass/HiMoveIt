@@ -13,7 +13,7 @@
         <!--My Works-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="HiMoveIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main" id="BYZ-38-t0r" customClass="MainViewController" customModule="HiMoveIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,8 +64,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="135" height="138"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sek-Yu-F2d">
-                                                    <rect key="frame" x="0.0" y="0.0" width="135" height="145"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sek-Yu-F2d">
+                                                    <rect key="frame" x="0.0" y="0.0" width="135" height="138"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -77,13 +78,14 @@
                                             <constraint firstAttribute="bottom" secondItem="sek-Yu-F2d" secondAttribute="bottom" id="rod-sC-rCq"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="imageEx" destination="sek-Yu-F2d" id="W4W-wf-PTU"/>
+                                            <outlet property="imageEx" destination="sek-Yu-F2d" id="12D-NM-cZg"/>
+
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="MYZ-dy-vzk"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="8IY-0R-NTR"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="2EP-oJ-s7t"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="nzm-Cv-StN"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -110,6 +112,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addBtn" destination="BgZ-wU-0d4" id="Gli-8v-i6G"/>
+                        <outlet property="collectionView" destination="fCs-FZ-LIk" id="IpE-hX-z9u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
