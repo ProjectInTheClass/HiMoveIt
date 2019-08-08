@@ -6,5 +6,5 @@ target 'HiMoveIt' do
   use_frameworks!
 
   # Pods for HiMoveIt
-  pod 'Regift', '~> 1.6'
+  # pod 'Regift', '~> 1.6'
 end

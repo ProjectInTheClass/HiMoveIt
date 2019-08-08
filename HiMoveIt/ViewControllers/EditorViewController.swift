@@ -68,6 +68,7 @@ class EditorViewController: UIViewController {
         self.player?.pause()
     }
     
+    
     @IBAction func cllickPlayBtn(_ sender: Any) {
         editPlay()
     }
