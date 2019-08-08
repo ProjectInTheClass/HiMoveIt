@@ -7,12 +7,11 @@
 //
 
 import UIKit
-
+import AVKit
 class MaskViewController: UIViewController {
     var selectedImage:UIImage?
+    var asset:AVAsset?
     var maskCanvas:MaskCanvasModel?
-    var currentImageView:UIImageView?
-    var imageRECT:CGRect?
     @IBOutlet weak var maskLayer: UIView!
     
     override func viewDidLoad() {
@@ -21,18 +20,16 @@ class MaskViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func setSelectedIamge(image:UIImage){
+    func initSet(asset:AVAsset,image:UIImage){
         self.selectedImage = image
+        self.asset = asset
     }
     
     func imageOver(image:UIImage){
         let imageView = UIImageView(image:image)
         imageView.contentMode = .scaleAspectFill
-        imageRECT = imageView.frame
         imageView.frame = maskLayer.bounds
-        maskLayer.clipsToBounds = true;
         maskLayer.addSubview(imageView)
-        currentImageView = imageView
     }
     func maskOver(){
         maskCanvas = MaskCanvasModel()
@@ -48,7 +45,7 @@ class MaskViewController: UIViewController {
         
         //let myimage = #imageLiteral(resourceName: "a").cgImage
         
-        var myimage = self.selectedImage?.cgImage
+        let myimage = self.selectedImage?.cgImage
         
         guard maskCanvas?.rootContext != nil else{
             print("maskCanvas rootContext is null")
@@ -86,17 +83,25 @@ class MaskViewController: UIViewController {
         imageOver(image: self.selectedImage!)
         maskOver()
     }
-    @IBAction func testbtn(_ sender: Any) {
-        myimage()
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        
+    
+    func loadEditorView(image:CGImage){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Editor", bundle: nil)
+        let editorViewController = storyBoard.instantiateViewController(withIdentifier: "editView") as! EditorViewController
+        editorViewController.initSet(asset: asset!, maskedImage: image)
+        self.present(editorViewController, animated: true, completion: nil)
     }
     
+    @IBAction func clickDoneBtn(_ sender: Any) {
+        loadEditorView(image: self.myimage()!)
+        
+    }
     @IBAction func clickCancelBtn(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func clickRestBtn(_ sender: Any) {
+        self.resetLayers()
+    }
     /*
     // MARK: - Navigation
 

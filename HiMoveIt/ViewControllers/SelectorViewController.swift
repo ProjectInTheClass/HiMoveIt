@@ -34,26 +34,19 @@ class SelectorViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     func goBack(){
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromLeft
-        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-        view.window!.layer.add(transition, forKey: kCATransition)
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
+    
     func procNextPreparing() {
         self.playerItem = AVPlayerItem(asset: self.playAsset!)
         self.player = AVPlayer(playerItem:self.playerItem)
         self.playerLayer = AVPlayerLayer(player: self.player)
         self.playerLayer!.videoGravity = .resizeAspectFill
         self.playOnReady = true;
-        
         self.videoPlay();
     }
     
     func setSliderValue(data:Double){
-        print("current time : ", data)
         let timerate = (data / (playAsset?.duration.seconds)!) * 100
         self.getTimeBar.setValue(Float(timerate), animated: true)
     }
@@ -80,7 +73,7 @@ class SelectorViewController: UIViewController, UINavigationControllerDelegate, 
         //setSwipeTransition()
         let storyBoard: UIStoryboard = UIStoryboard(name: "Editor", bundle: nil)
         let maskViewController = storyBoard.instantiateViewController(withIdentifier: "maskView") as! MaskViewController
-        maskViewController.setSelectedIamge(image: image)
+        maskViewController.initSet(asset: playAsset!, image: image)
         self.present(maskViewController, animated: true, completion: nil)
     }
     
