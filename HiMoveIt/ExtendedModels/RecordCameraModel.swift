@@ -74,6 +74,7 @@ class RecordCameraModel{
     func stopRec() -> NSURL{
         self.movieOutput?.stopRecording()
         self.dismissCaptureSession()
+        self.setCamera()
         
         return self.outFileDir!
     }

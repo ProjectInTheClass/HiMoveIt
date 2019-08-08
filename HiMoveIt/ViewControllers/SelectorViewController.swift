@@ -29,9 +29,8 @@ class SelectorViewController: UIViewController, UINavigationControllerDelegate, 
         super.viewDidLoad()
     }
     
-    func setRecURL(fileURL:NSURL){
-        self.recFileURL = fileURL
-        
+    func setAsset(asset:AVAsset){
+        self.playAsset = asset
     }
     
     func goBack(){
@@ -43,28 +42,6 @@ class SelectorViewController: UIViewController, UINavigationControllerDelegate, 
         view.window!.layer.add(transition, forKey: kCATransition)
         self.dismiss(animated: false, completion: nil)
     }
-    func setParamVideo(){
-        playAsset = AVAsset(url: recFileURL! as URL)
-        
-        playAsset?.loadValuesAsynchronously(forKeys:["playable"] , completionHandler: {
-            var err:NSError? = nil
-            let status = self.playAsset!.statusOfValue(forKey: "playable", error: &err)
-            
-            switch status {
-            case .loaded:
-                self.procNextPreparing()
-                break
-            case .failed:
-                print("error:",err as Any)
-                break
-            default:
-                print("error:",err as Any)
-                break
-            }
-        })
-        
-        //로드하는 시간동안 본 함수가 살아있지 않고 죽어버리면 뒤져버림;;;;;;
-    }
     func procNextPreparing() {
         self.playerItem = AVPlayerItem(asset: self.playAsset!)
         self.player = AVPlayer(playerItem:self.playerItem)
@@ -74,11 +51,13 @@ class SelectorViewController: UIViewController, UINavigationControllerDelegate, 
         
         self.videoPlay();
     }
+    
     func setSliderValue(data:Double){
         print("current time : ", data)
         let timerate = (data / (playAsset?.duration.seconds)!) * 100
         self.getTimeBar.setValue(Float(timerate), animated: true)
     }
+    
     func videoPlay(){
         if(playOnReady){
             self.playerLayer!.frame = self.playGround.bounds
@@ -107,7 +86,7 @@ class SelectorViewController: UIViewController, UINavigationControllerDelegate, 
     
     override func viewDidAppear(_ animated: Bool) {        // view가 나타날때 player 재생
         super.viewDidAppear(animated)
-        self.setParamVideo()
+        self.procNextPreparing()
     }
     @IBAction func clickCancelBtn(_ sender: Any) {
         goBack()

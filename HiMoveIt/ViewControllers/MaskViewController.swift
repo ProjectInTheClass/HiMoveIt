@@ -14,14 +14,17 @@ class MaskViewController: UIViewController {
     var currentImageView:UIImageView?
     var imageRECT:CGRect?
     @IBOutlet weak var maskLayer: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.resetLayers()
         // Do any additional setup after loading the view.
     }
+    
     func setSelectedIamge(image:UIImage){
         self.selectedImage = image
     }
+    
     func imageOver(image:UIImage){
         let imageView = UIImageView(image:image)
         imageView.contentMode = .scaleAspectFill
@@ -87,8 +90,7 @@ class MaskViewController: UIViewController {
         myimage()
     }
     override func viewDidAppear(_ animated: Bool) {
-        imageOver(image: self.selectedImage!)
-        maskOver()
+        
     }
     
     @IBAction func clickCancelBtn(_ sender: Any) {
