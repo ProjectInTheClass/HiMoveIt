@@ -232,13 +232,23 @@
                                             <action selector="cllickPlayBtn:" destination="1Qy-zH-KHe" eventType="touchUpInside" id="0dJ-Bp-eSD"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQY-XX-QtD">
+                                        <rect key="frame" x="188.66666666666666" y="21.666666666666629" width="37" height="38"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="저장"/>
+                                        <connections>
+                                            <action selector="clickSaveBtn:" destination="1Qy-zH-KHe" eventType="touchUpInside" id="Ohn-MT-XX4"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="81" id="78Y-7H-eo3"/>
                                     <constraint firstAttribute="trailing" secondItem="U5n-O7-wjk" secondAttribute="trailing" constant="16" id="QT4-sD-vIn"/>
+                                    <constraint firstItem="PQY-XX-QtD" firstAttribute="centerY" secondItem="SMX-XI-9mw" secondAttribute="centerY" id="auc-LU-jQa"/>
                                     <constraint firstItem="iFB-iO-9JX" firstAttribute="centerY" secondItem="SMX-XI-9mw" secondAttribute="centerY" id="fHG-oY-FxA"/>
                                     <constraint firstItem="U5n-O7-wjk" firstAttribute="centerY" secondItem="SMX-XI-9mw" secondAttribute="centerY" id="feh-Ih-kp1"/>
+                                    <constraint firstItem="PQY-XX-QtD" firstAttribute="centerX" secondItem="SMX-XI-9mw" secondAttribute="centerX" id="fpk-Pd-REO"/>
                                     <constraint firstItem="iFB-iO-9JX" firstAttribute="leading" secondItem="SMX-XI-9mw" secondAttribute="leading" constant="16" id="gU9-CX-lx6"/>
                                 </constraints>
                             </view>

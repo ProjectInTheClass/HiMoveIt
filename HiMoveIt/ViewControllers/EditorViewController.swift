@@ -90,17 +90,36 @@ class EditorViewController: UIViewController {
         })
         self.presentingViewController?.dismiss(animated: true, completion: {
             self.dismiss(animated: true, completion: nil)
+            
         })
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func clickDoneBtn(_ sender: Any) {
+    func floatProgress() -> UIAlertController{
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        self.present(alert, animated: true, completion: nil)
+        return alert
+    }
+    @IBAction func clickSaveBtn(_ sender: Any) {
         guard asset != nil , maskedImage != nil else {
             return
         }
-        let renderer = RenderModel(asset: asset!, maskedImage: maskedImage!)
-        _ = renderer.render()
-        FloatAlertModel(rootView: self).createAlert(title: "생성완료", message: "성공적으로 생성되었습니다.",funcd:pageClose)
+        let alert = floatProgress()
+        let renderer = RenderModel(asset: asset!, maskedImage: maskedImage!,rootView: self)
+        let workASyncQueue = DispatchQueue(label: "jwqueue",attributes:.concurrent)
+        let renderTesk = DispatchWorkItem{
+            _ = renderer.render(alerter:alert)
+        }
+        workASyncQueue.async(execute: renderTesk)
+    }
+    
+    @IBAction func clickDoneBtn(_ sender: Any) {
+        pageClose()
     }
     
     
