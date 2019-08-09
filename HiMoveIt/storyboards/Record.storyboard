@@ -93,16 +93,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9S6-4r-CCC" firstAttribute="trailing" secondItem="bvs-nc-ASg" secondAttribute="trailing" id="2WY-pQ-me1"/>
+                            <constraint firstItem="bvs-nc-ASg" firstAttribute="trailing" secondItem="9S6-4r-CCC" secondAttribute="trailing" id="3Tq-qt-YhP"/>
                             <constraint firstItem="eoO-34-n6d" firstAttribute="leading" secondItem="9S6-4r-CCC" secondAttribute="leading" id="43F-al-bLP"/>
                             <constraint firstItem="bvs-nc-ASg" firstAttribute="leading" secondItem="9S6-4r-CCC" secondAttribute="leading" id="EVX-dD-FVd"/>
                             <constraint firstItem="eoO-34-n6d" firstAttribute="top" secondItem="1Sj-qt-d3N" secondAttribute="bottom" id="KxB-2q-hYG"/>
                             <constraint firstItem="1Sj-qt-d3N" firstAttribute="top" secondItem="9S6-4r-CCC" secondAttribute="top" id="P4d-h2-PKl"/>
+                            <constraint firstItem="bvs-nc-ASg" firstAttribute="leading" secondItem="9S6-4r-CCC" secondAttribute="leading" id="Ptx-QS-l7g"/>
                             <constraint firstItem="9S6-4r-CCC" firstAttribute="bottom" secondItem="bvs-nc-ASg" secondAttribute="bottom" id="Ryo-oz-jx0"/>
                             <constraint firstItem="bvs-nc-ASg" firstAttribute="top" secondItem="eoO-34-n6d" secondAttribute="bottom" id="UG7-m4-A2m"/>
                             <constraint firstItem="1Sj-qt-d3N" firstAttribute="leading" secondItem="9S6-4r-CCC" secondAttribute="leading" id="Xgu-oX-e7i"/>
                             <constraint firstItem="9S6-4r-CCC" firstAttribute="trailing" secondItem="eoO-34-n6d" secondAttribute="trailing" id="ZJ5-EP-Qru"/>
                             <constraint firstItem="9S6-4r-CCC" firstAttribute="trailing" secondItem="1Sj-qt-d3N" secondAttribute="trailing" id="dED-zd-5D4"/>
                             <constraint firstItem="bvs-nc-ASg" firstAttribute="top" secondItem="eoO-34-n6d" secondAttribute="bottom" id="erX-ae-Zpm"/>
+                            <constraint firstItem="bvs-nc-ASg" firstAttribute="bottom" secondItem="9S6-4r-CCC" secondAttribute="bottom" id="nA3-Cf-Rio"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9S6-4r-CCC"/>
                     </view>
