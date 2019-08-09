@@ -33,9 +33,19 @@ class MaskViewController: UIViewController {
     func maskOver(){
         maskCanvas = MaskCanvasModel()
         maskCanvas!.frame = maskLayer.bounds
-        let xBound = maskLayer.bounds.width
-        let yBound = maskLayer.bounds.width * ((selectedImage?.size.height)! / (selectedImage?.size.width)!)
-        maskCanvas!.bounds = CGRect(x: 0, y: 0, width: xBound, height: yBound)
+        
+        let xBound:CGFloat?
+        let yBound:CGFloat?
+        if( (selectedImage?.size.width)! < (selectedImage?.size.height)! ){
+            xBound = maskLayer.bounds.width
+            yBound = maskLayer.bounds.width * ((selectedImage?.size.height)! / (selectedImage?.size.width)!)
+        }else{
+            xBound = maskLayer.bounds.height  * ((selectedImage?.size.width)! / (selectedImage?.size.height)!)
+            yBound = maskLayer.bounds.height
+        }
+        
+        
+        maskCanvas!.bounds = CGRect(x: 0, y: 0, width: xBound!, height: yBound!)
         maskCanvas!.contentMode = .scaleAspectFill
         maskCanvas!.backgroundColor = UIColor(white: 1, alpha: 0.3)
         maskLayer.addSubview(maskCanvas!)
