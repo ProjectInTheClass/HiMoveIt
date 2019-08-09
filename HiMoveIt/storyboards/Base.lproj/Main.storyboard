@@ -36,6 +36,14 @@
                                             <action selector="clickAddBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NtZ-TD-9jc"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KrB-Rr-Tq3">
+                                        <rect key="frame" x="228" y="28" width="54" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="preview"/>
+                                        <connections>
+                                            <action selector="clickPreviewButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C0B-bv-YtK"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -79,7 +87,6 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="imageEx" destination="sek-Yu-F2d" id="12D-NM-cZg"/>
-
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
