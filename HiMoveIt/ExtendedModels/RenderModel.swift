@@ -17,6 +17,7 @@ class RenderModel{
     var increment:Float?
     var delayTime:Float?
     var frameRate:Int?
+    var rootView:UIViewController?
     private struct Group {
         let group = DispatchGroup()
         func enter() { group.enter() }
@@ -25,9 +26,10 @@ class RenderModel{
     }
 
     
-    init(asset:AVAsset, maskedImage:CGImage){
+    init(asset:AVAsset, maskedImage:CGImage,rootView:UIViewController){
         self.asset = asset
         self.maskedImage = maskedImage
+        self.rootView = rootView
         self.frameRate = 15
         self.frameCount = Int(asset.duration.seconds) * frameRate!
         self.increment = Float(Int(asset.duration.seconds)) / Float(frameCount!)
@@ -35,7 +37,7 @@ class RenderModel{
         
     }
     
-    func getFileUrl() -> NSURL{
+    func getFileUrl(ext:String) -> [NSURL]{
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first as String?
         
         let dateFormatter = DateFormatter()
@@ -44,8 +46,9 @@ class RenderModel{
         
         let filename = dateFormatter.string(from: NSDate() as Date)
         let dirURL:NSURL = NSURL(fileURLWithPath: documentPath!)
-        let fileURL:NSURL = dirURL.appendingPathComponent(filename+".gif")! as NSURL
-        return fileURL
+        let fileURL:NSURL = dirURL.appendingPathComponent(filename+"."+ext)! as NSURL
+        let thmURL:NSURL = dirURL.appendingPathComponent(filename+".png")! as NSURL
+        return [fileURL,thmURL]
     }
     func imageMerge(baseImage:UIImage, overImage:UIImage) -> CGImage?{
         let bounds1 = CGRect(x: 0, y: 0, width: baseImage.size.width, height: baseImage.size.height)
@@ -63,7 +66,10 @@ class RenderModel{
         ctx.draw(overImage.cgImage!, in: bounds2)
         return ctx.makeImage()
     }
-    func render() -> NSURL?{
+    
+    
+    
+    func render(alerter:UIAlertController) -> NSURL?{
         guard asset != nil else{
             return nil
         }
@@ -72,6 +78,8 @@ class RenderModel{
         }
         
         var timePoints:[CMTime] = []
+        var handledTimes: Int = 0
+        
         
         let fileProperties = [kCGImagePropertyGIFDictionary as String:[
             kCGImagePropertyGIFLoopCount as String: NSNumber(value: Int32(0) as Int32)],
@@ -104,38 +112,65 @@ class RenderModel{
         let gifGroup = Group()
         gifGroup.enter()
         
-        var handledTimes: Double = 0
-        let fileUrl = self.getFileUrl()
-        guard let destination = CGImageDestinationCreateWithURL(fileUrl as CFURL, kUTTypeGIF, frameCount!, nil) else {
+        
+        let fileUrl = self.getFileUrl(ext: "gif")
+        guard let destination = CGImageDestinationCreateWithURL(fileUrl[0] as CFURL, kUTTypeGIF, frameCount!, nil) else {
             return nil
         }
-       
+
+        
         generator.generateCGImagesAsynchronously(forTimes: times, completionHandler: { (requestedTime, image, actualTime, result, error) in
             handledTimes += 1
+            
             guard let imageRef = image , error == nil else {
                 if requestedTime == times.last?.timeValue {
+                    alerter.dismiss(animated: true, completion: nil)
+                    FloatAlertModel(rootView: self.rootView!).createAlert(title: "생성완료", message: "성공적으로 생성되었습니다.")
                     gifGroup.leave()
                 }
                 return
             }
+            
+            
 
             let maskImage = UIImage(cgImage: self.maskedImage!)
             let baseImage = UIImage(cgImage: imageRef)
             let newImage = self.imageMerge(baseImage: baseImage, overImage: maskImage)
+            if(handledTimes == 1){
+                self.saveImage(image: newImage!,url: fileUrl[1])
+            }
             CGImageDestinationAddImage(destination, newImage!, frameProperties as CFDictionary)
             if requestedTime == times.last?.timeValue {
+                alerter.dismiss(animated: true, completion: nil)
+                FloatAlertModel(rootView: self.rootView!).createAlert(title: "생성완료", message: "성공적으로 생성되었습니다.")
                 gifGroup.leave()
             }
         })
-        
-        // Wait for the asynchronous generator to finish.
         gifGroup.wait()
-        
         CGImageDestinationSetProperties(destination, fileProperties as CFDictionary)
-        
         CGImageDestinationFinalize(destination)
         
-        return fileUrl
+        return fileUrl[0]
     }
+    func imageWith(uiImage: UIImage,rate:CGFloat) -> UIImage {
+        let bounds1 = CGRect(x: 0, y: 0, width: uiImage.size.width * rate, height: uiImage.size.height * rate)
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue)
+        let ctx = CGContext(data: nil,
+                            width: Int(CGFloat(uiImage.cgImage!.width) * rate),
+                            height: Int(CGFloat(uiImage.cgImage!.height) * rate),
+                            bitsPerComponent: uiImage.cgImage!.bitsPerComponent,
+                            bytesPerRow: uiImage.cgImage!.bytesPerRow,
+                            space: uiImage.cgImage!.colorSpace!,
+                            bitmapInfo: bitmapInfo.rawValue)!
+        ctx.draw(uiImage.cgImage!, in: bounds1)
+        let outUIImage = UIImage(cgImage: ctx.makeImage()!)
+        return outUIImage
+    }
+    func saveImage (image: CGImage, url: NSURL ){
+        let uiImage = imageWith(uiImage: UIImage(cgImage: image),rate:0.5)
+        let pngImageData = uiImage.pngData()
+        try! pngImageData!.write(to: url as URL)
+    }
+    
 }
 

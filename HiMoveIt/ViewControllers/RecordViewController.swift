@@ -90,11 +90,10 @@ class RecordViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
         self.recordCameraModel = RecordCameraModel(cameraLayer: cameraLayer, rootView: self)
         self.recordStatus = RecordStatusModel()
         self.roundBtn(recordBtn);
-        
         UIView.transition(with: self.cameraLayer, duration: 0.5, options: .transitionFlipFromLeft, animations: {
             self.cameraLayer.isHidden = false
-            self.recordCameraModel?.setCamera()
         }, completion: nil)
+        
     }
     
     @IBAction func clickFlashBtn(_ sender: Any) {

@@ -45,7 +45,10 @@ class RecordCameraModel{
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
             videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
             videoPreviewLayer?.frame = cameraLayer!.layer.bounds
-            cameraLayer!.layer.insertSublayer(videoPreviewLayer!,at:0)
+            cameraLayer!.layer.sublayers?.forEach({ (layer) in
+                layer.removeFromSuperlayer()
+            })
+            cameraLayer!.layer.addSublayer(videoPreviewLayer!)
             
             
             session?.startRunning()
@@ -121,6 +124,7 @@ class RecordCameraModel{
             print("Back Cam is disable")
             return
         }
+        setCamera()
     }
     func frontCam(){
         //captureDevice = AVCaptureDevice.devices().filter{ $0.hasMediaType(AVMediaType.video) && $0.position == .front }.first!
@@ -155,7 +159,7 @@ class RecordCameraModel{
         
         self.movieOutput?.stopRecording()
         self.dismissCaptureSession()
-        
+        setCamera()
     }
     
     
