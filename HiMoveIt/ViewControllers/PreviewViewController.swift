@@ -49,7 +49,6 @@ class PreviewController: UIViewController {
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let mainViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! MainViewController
-        mainViewController.removeImage(indx: index!)
         self.dismiss(animated: true, completion: nil)
     }
     
