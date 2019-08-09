@@ -108,7 +108,18 @@ class MainViewController: UIViewController{
         
 
     }
-  
+  // 합치기 전에 지우자
+    func loadPreview(){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Preview", bundle: nil)
+        let previewController = storyBoard.instantiateViewController(withIdentifier: "preview") as! PreviewController
+        self.present(previewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func clickPreviewButton(_ sender: Any) {
+        loadPreview()
+    }
+    //
+    
     func loadRecordView(){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Record", bundle: nil)
         let recordViewController = storyBoard.instantiateViewController(withIdentifier: "recordView") as! RecordViewController
