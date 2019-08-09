@@ -20,11 +20,26 @@ extension UIImageView {
             }
         }
     }
+    public func loadGif(url: String) {
+        DispatchQueue.global().async {
+            let image = UIImage.gif(url: url)
+            DispatchQueue.main.async {
+                self.image = image
+            }
+        }
+    }
+    public func loadGif(data: Data) {
+        DispatchQueue.global().async {
+            let image = UIImage.gif(data: data)
+            DispatchQueue.main.async {
+                self.image = image
+            }
+        }
+    }
     
 }
 
 extension UIImage {
-    
     public class func gif(data: Data) -> UIImage? {
         // Create source from data
         guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
@@ -35,14 +50,20 @@ extension UIImage {
         return UIImage.animatedImageWithSource(source)
     }
     
+    
     public class func gif(url: String) -> UIImage? {
         // Validate URL
         guard let bundleURL = URL(string: url) else {
             print("SwiftGif: This image named \"\(url)\" does not exist")
             return nil
         }
+        do{
+            try Data(contentsOf: bundleURL)
+            
+        }catch {
+            print(error)
+        }
         
-        // Validate data
         guard let imageData = try? Data(contentsOf: bundleURL) else {
             print("SwiftGif: Cannot turn image named \"\(url)\" into NSData")
             return nil
@@ -60,6 +81,7 @@ extension UIImage {
         }
         
         // Validate data
+        
         guard let imageData = try? Data(contentsOf: bundleURL) else {
             print("SwiftGif: Cannot turn image named \"\(name)\" into NSData")
             return nil

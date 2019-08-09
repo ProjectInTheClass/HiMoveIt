@@ -24,6 +24,7 @@ class MainViewController: UIViewController{
     let cellIdentifier: String = "cell"
     let picker = UIImagePickerController()
     var videoURL: NSURL?
+    var gridData : [URL] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class MainViewController: UIViewController{
         collectionView.reloadData()
     }
     
-    var gridData : [URL]!
+    
     
     func loadImages(){
         do {
@@ -88,10 +89,10 @@ class MainViewController: UIViewController{
             present(picker, animated: true, completion: nil)
         }
     }
-    func loadPreview(gifUrl:URL){
+    func loadPreview(gifUrl:NSURL){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Preview", bundle: nil)
         let previewController = storyBoard.instantiateViewController(withIdentifier: "preview") as! PreviewController
-        previewController.setGifUrl(url: gifUrl)
+        previewController.setGifUrl(gifUrl: gifUrl)
         self.present(previewController, animated: true, completion: nil)
     }
     
@@ -123,6 +124,9 @@ class MainViewController: UIViewController{
             }
         })
     }
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
 }
 
 
@@ -144,8 +148,14 @@ extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCollectionViewCellModel
-        cell.imageEx.image =  UIImage(contentsOfFile: gridData[indexPath.row].absoluteString)
-        cell.gifURL = gridData[indexPath.row].absoluteString.replacingOccurrences(of: "png", with: "gif")
+        //cell.imageEx.image =  UIImage(contentsOfFile: gridData[indexPath.row].absoluteString)
+        getData(from: gridData[indexPath.row]) { data, response, error in
+            guard let data = data, error == nil else { return }
+            DispatchQueue.main.async() {
+                cell.imageEx.image = UIImage(data: data)
+            }
+        }
+        cell.gifURL = gridData[indexPath.row].path.replacingOccurrences(of: "png", with: "gif")
         return cell
     }
     
@@ -161,9 +171,10 @@ extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCollectionViewCellModel
-        let gifUrl = NSURL(fileURLWithPath: cell.gifURL!)
-        
+        let cell = collectionView.cellForItem(at: indexPath) as! ImageCollectionViewCellModel
+        let gifUrl = NSURL(fileURLWithPath: cell.gifURL!, isDirectory: false)
+        print(gifUrl)
+        loadPreview(gifUrl: gifUrl)
         
     }
     

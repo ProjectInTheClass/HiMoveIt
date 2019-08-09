@@ -7,39 +7,42 @@ import Photos
 
 class PreviewController: UIViewController {
     
-    @IBOutlet weak var preViewImage: UIImageView!
+    @IBOutlet weak var preViewImage: UIImageView?
     
-    var shareImage = URL(fileURLWithPath: Bundle.main.path(forResource: "image", ofType: "gif") ?? "") // 수정후 지우자 !!
-    var image: UIImage = UIImage()
-    var imageUrl: URL!
-    var index: Int?
-    
+    var shareImage:NSURL?
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDidAppear(true)
         // Do any additional setup after loading the view.
     }
 
-    func setImage(image: UIImage, url: URL,number: Int){
-        self.image = image
-        self.imageUrl = url
-        self.index = number
+    func setGifUrl(gifUrl: NSURL){
+        self.shareImage = gifUrl
     }
     
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
     override func viewDidAppear(_ animated: Bool) {
-        preViewImage.loadGif(name: "testImage") // \(imageUrl) 이걸로 나중에 변경 !!
+        //preViewImage!.loadGif(name: "testImage") // \(imageUrl) 이걸로 나중에 변경 !!
+        preViewImage!.loadGif(url: shareImage!.absoluteString!)
+//        getData(from: shareImage! as URL) { data, response, error in
+//            guard let data = data, error == nil else { return }
+//            DispatchQueue.global().async {
+//                let image = self.preViewImage?.image.gif(data: data)
+//                DispatchQueue.main.async {
+//                    self.preViewImage?.image = image
+//                }
+//            }
+//
+//        }
     }
     
-    func loadMainView(){
-        
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! MainViewController
-        self.dismiss(animated: true, completion: nil)
-    }
     
     @IBAction func btnShare(_ sender: Any) {
 
-        let vc = UIActivityViewController(activityItems: [shareImage], applicationActivities: []) // share 이놈 image로 변경!!
+        let vc = UIActivityViewController(activityItems: [shareImage as Any], applicationActivities: []) // share 이놈 image로 변경!!
 
         if let popoverController = vc.popoverPresentationController {
             popoverController.sourceView = self.view
@@ -50,7 +53,6 @@ class PreviewController: UIViewController {
     }
     
     @IBAction func btnDelete(_ sender: Any) {
-        loadMainView()
     }
     
     @IBAction func btnCancel(_ sender: Any) {
