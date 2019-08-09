@@ -16,7 +16,7 @@ class RenderModel{
     var frameCount:Int?
     var increment:Float?
     var delayTime:Float?
-    
+    var frameRate:Int?
     private struct Group {
         let group = DispatchGroup()
         func enter() { group.enter() }
@@ -28,9 +28,10 @@ class RenderModel{
     init(asset:AVAsset, maskedImage:CGImage){
         self.asset = asset
         self.maskedImage = maskedImage
-        self.frameCount = Int(asset.duration.seconds) * 24
+        self.frameRate = 15
+        self.frameCount = Int(asset.duration.seconds) * frameRate!
         self.increment = Float(Int(asset.duration.seconds)) / Float(frameCount!)
-        self.delayTime  = 1.0/24
+        self.delayTime  = 1.0/Float(frameRate!)
         
     }
     
